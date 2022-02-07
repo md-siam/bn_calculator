@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class MyButton extends StatefulWidget {
   final Color color;
@@ -20,9 +21,15 @@ class MyButton extends StatefulWidget {
 
 class _MyButtonState extends State<MyButton> {
   bool _isElevated = true;
+  AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
+  bool _isPlaying = false;
   final Color _color = Colors.grey[300]!;
 
-  void _pressedDown(PointerEvent details) {
+  void _pressedDown(PointerEvent details) async {
+    await audioCache.play(
+      'office_calculator_single_press_002.wav',
+      mode: PlayerMode.LOW_LATENCY,
+    );
     setState(() {
       _isElevated = !_isElevated;
     });
