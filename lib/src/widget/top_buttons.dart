@@ -4,12 +4,11 @@ import 'package:provider/provider.dart';
 import '../provider/theme_provider.dart';
 
 class TopButtons extends StatelessWidget {
+  final ThemeProvider themeProvider;
   const TopButtons({
     Key? key,
     required this.themeProvider,
   }) : super(key: key);
-
-  final ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +44,15 @@ class TopButtons extends StatelessWidget {
         Icons.calculate_outlined,
         size: 80,
       ),
-      applicationName: 'Bangla Calculator',
+      applicationName: 'Bengali Calculator',
       applicationVersion: '0.2.1',
       applicationLegalese: '©2021, mdsiam.xyz',
       children: const [
         Padding(
           padding: EdgeInsets.only(top: 15.0),
           child: Text(
-            'This app will teach you some of the common widgets that are available in flutter SDK, & shows you how to use them for your UI design.',
+            'Neomorphic design Bengali calculator will be on the app store before 21st February, in celebration of International Mother Language Day',
+            textAlign: TextAlign.justify,
           ),
         ),
       ],

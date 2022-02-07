@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   var userQuestion = '';
   var userAnswer = '';
   final Color _color = Colors.grey[300]!;
-  final Color _buttonTextColor = Colors.grey;
+  //final Color _color = const Color(0xFF15202B);
 
   final List<String> buttons = [
     'C',
@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
               Expanded(
                 flex: 2,
                 child: GridView.builder(
@@ -107,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                         },
                         buttonText: buttons[index],
                         color: _color,
-                        textColor: _buttonTextColor,
                       );
                     }
                     // Delete Button
@@ -123,7 +123,6 @@ class _HomePageState extends State<HomePage> {
                         },
                         buttonText: buttons[index],
                         color: _color,
-                        textColor: Colors.grey,
                       );
                     }
                     // ANS Button (previous stored answer)
@@ -143,7 +142,6 @@ class _HomePageState extends State<HomePage> {
                         },
                         buttonText: buttons[index],
                         color: _color,
-                        textColor: _buttonTextColor,
                       );
                     }
                     // Equal Button
@@ -163,7 +161,6 @@ class _HomePageState extends State<HomePage> {
                         },
                         buttonText: buttons[index],
                         color: _color,
-                        textColor: _buttonTextColor,
                       );
                     }
                     // Rest of the buttons
@@ -176,7 +173,6 @@ class _HomePageState extends State<HomePage> {
                         },
                         buttonText: buttons[index],
                         color: _color,
-                        textColor: _buttonTextColor,
                       );
                     }
                   },

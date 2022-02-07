@@ -3,14 +3,12 @@ import 'package:audioplayers/audioplayers.dart';
 
 class MyButton extends StatefulWidget {
   final Color color;
-  final Color textColor;
   final String buttonText;
   final butttonTapped;
 
   const MyButton({
     Key? key,
     required this.color,
-    required this.textColor,
     required this.buttonText,
     this.butttonTapped,
   }) : super(key: key);
@@ -22,8 +20,6 @@ class MyButton extends StatefulWidget {
 class _MyButtonState extends State<MyButton> {
   bool _isElevated = true;
   AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
-  bool _isPlaying = false;
-  final Color _color = Colors.grey[300]!;
 
   void _pressedDown(PointerEvent details) async {
     await audioCache.play(
@@ -57,11 +53,26 @@ class _MyButtonState extends State<MyButton> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: _isElevated
                   ? [
+                      // dark theme
+                      // const BoxShadow(
+                      //   color: Colors.black,
+                      //   offset: Offset(4, 4),
+                      //   blurRadius: 15,
+                      //   spreadRadius: 1,
+                      // ),
+                      // const BoxShadow(
+                      //   color: Colors.white12,
+                      //   offset: Offset(-4, -4),
+                      //   blurRadius: 15,
+                      //   spreadRadius: 1,
+                      // )
+
+                      // light theme
                       BoxShadow(
                         color: Colors.grey[500]!,
                         offset: const Offset(4, 4),
                         blurRadius: 15,
-                        // spreadRadius: 1,
+                        spreadRadius: 1,
                       ),
                       const BoxShadow(
                         color: Colors.white,
@@ -75,8 +86,7 @@ class _MyButtonState extends State<MyButton> {
             child: Center(
               child: Text(
                 widget.buttonText,
-                style: TextStyle(
-                  color: widget.textColor,
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),

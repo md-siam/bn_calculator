@@ -1,16 +1,16 @@
-# bengali_calculator
+# Bengali Calculator
+<img align="right" src="assets/images/playstore.png" height="190"></img>
+Neomorphic design Bengali calculator will be on the app store before 21st February, in celebration of International Mother Language Day
 
-A new Flutter project.
+## Screenshots
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<table align="center" style="margin: 0px auto;">
+  <tr>
+    <th>Light Mode</th>
+    <th>Dark Mode</th>
+  </tr>
+  <tr>
+    <td><img align="right" src="screenshots/light.gif" height="500"></img></td>
+    <td><img align="right" src="screenshots/dark.gif" height="500"></img></td>
+  </tr>
+  </table>
