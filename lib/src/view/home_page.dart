@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: SafeArea(
@@ -52,11 +53,14 @@ class _HomePageState extends State<HomePage> {
           children: [
             // top row buttons containing darkmode & info
             TopButtons(themeProvider: themeProvider),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.19,
+            Expanded(
+              flex: 1,
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 12.0, right: 12.0, bottom: 10.0),
+                  left: 10.0,
+                  right: 10.0,
+                  bottom: 5.0,
+                ),
                 child: ClayContainer(
                   emboss: true,
                   color: Theme.of(context).primaryColor,
@@ -65,21 +69,23 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10.0),
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.topLeft,
                         child: Text(
                           userQuestion,
-                          style: const TextStyle(
-                            fontSize: 24,
+                          style: TextStyle(
+                            fontSize: deviceHeight < 670 ? 24 : 30,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       Container(
                         padding: const EdgeInsets.all(10.0),
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.bottomRight,
                         child: Text(
                           userAnswer,
-                          style: const TextStyle(fontSize: 24),
+                          style: TextStyle(
+                            fontSize: deviceHeight < 670 ? 24 : 32,
+                          ),
                         ),
                       ),
                     ],
@@ -87,9 +93,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
+            SizedBox(height: deviceHeight > 670 ? 20 : 0),
             Expanded(
-              flex: 2,
+              flex: 4,
               child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -223,8 +229,8 @@ class _HomePageState extends State<HomePage> {
             '$firstSplit*($firstSplit*($secondSplit/100))';
 
         _parsingQuestion(modifiedQuestion);
-      }else if(finalQuestion.contains('/')){
-          var firstSplit = finalQuestion.toString().split('/')[0];
+      } else if (finalQuestion.contains('/')) {
+        var firstSplit = finalQuestion.toString().split('/')[0];
         var secondSplit =
             finalQuestion.toString().split('/')[1].replaceAll('%', '');
         String modifiedQuestion =
