@@ -25,12 +25,12 @@ class MyTheme {
     primaryColor: Colors.grey[300], // using this for MyButton color
     shadowColor: Colors.grey[500]!, // using this for MyButton shadow1 color
     splashColor: Colors.white, // using this for MyButton shadow2 color
-    hintColor: Colors.grey, // using this for icon color
+    iconTheme: const IconThemeData(color: Colors.blueGrey),
     textTheme: const TextTheme(
       headline5: TextStyle(color: Colors.black87),
       caption: TextStyle(color: Colors.blue),
       subtitle1: TextStyle(color: Colors.black),
-      bodyText2: TextStyle(color: Colors.grey),
+      bodyText2: TextStyle(color: Colors.blueGrey),
     ),
   );
   static final darkTheme = ThemeData.dark().copyWith(
@@ -47,7 +47,7 @@ class MyTheme {
     primaryColor: const Color(0xFF15202B), // using this for MyButton color
     shadowColor: Colors.black, // using this for MyButton shadow1 color
     splashColor: Colors.white12, // using this for MyButton shadow2 color
-    hintColor: const Color(0xFFFADA74), // using this for icon color
+    iconTheme: const IconThemeData(color: Color(0xFFFADA74)),
     textTheme: const TextTheme(
       bodyText2: TextStyle(color: Color(0xFFFADA74)),
     ),

@@ -1,6 +1,7 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../provider/theme_provider.dart';
 
 class TopButtons extends StatelessWidget {
@@ -16,7 +17,7 @@ class TopButtons extends StatelessWidget {
       children: [
         const SizedBox(width: 10),
         DayNightSwitcherIcon(
-          dayBackgroundColor: Colors.grey,
+          dayBackgroundColor: Colors.blueGrey,
           isDarkModeEnabled: themeProvider.isDarkMode,
           onStateChanged: (value) {
             final provider = Provider.of<ThemeProvider>(context, listen: false);
@@ -30,7 +31,6 @@ class TopButtons extends StatelessWidget {
             infoDialog(context);
           },
           icon: const Icon(Icons.info_outline),
-          color: Theme.of(context).hintColor,
           iconSize: 38,
         ),
       ],
@@ -46,7 +46,7 @@ class TopButtons extends StatelessWidget {
       ),
       applicationName: 'Bengali Calculator',
       applicationVersion: '0.2.1',
-      applicationLegalese: '©2021, mdsiam.xyz',
+      applicationLegalese: '©2022, mdsiam.xyz',
       children: const [
         Padding(
           padding: EdgeInsets.only(top: 15.0),

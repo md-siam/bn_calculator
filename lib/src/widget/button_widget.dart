@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
 
 class MyButton extends StatefulWidget {
   final String buttonText;
@@ -45,7 +45,7 @@ class _MyButtonState extends State<MyButton> {
           onPointerDown: _pressedDown,
           onPointerUp: _pressedUp,
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 10),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(20),
