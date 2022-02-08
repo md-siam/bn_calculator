@@ -28,9 +28,12 @@ class MyTheme {
     iconTheme: const IconThemeData(color: Colors.blueGrey),
     textTheme: const TextTheme(
       headline5: TextStyle(color: Colors.black87),
-      caption: TextStyle(color: Colors.blue),
+      caption: TextStyle(color: Colors.blueAccent),
       subtitle1: TextStyle(color: Colors.black),
       bodyText2: TextStyle(color: Colors.blueGrey),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(primary: Colors.blueAccent),
     ),
   );
   static final darkTheme = ThemeData.dark().copyWith(
@@ -53,5 +56,8 @@ class MyTheme {
     ),
     dialogBackgroundColor: const Color(0xFF253341),
     cardColor: const Color(0xFF15202B),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(primary: const Color(0xFFFADA74)),
+    ),
   );
 }

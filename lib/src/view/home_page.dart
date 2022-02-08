@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:clay_containers/clay_containers.dart';
+import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'package:provider/provider.dart';
+
 import '../provider/theme_provider.dart';
 import '../widget/button_widget.dart';
 import '../widget/top_buttons.dart';
@@ -46,133 +47,133 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              // top row buttons containing darkmode & info
-              TopButtons(themeProvider: themeProvider),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.17,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                  child: ClayContainer(
-                    emboss: true,
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: 20.0,
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            userQuestion,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // top row buttons containing darkmode & info
+            TopButtons(themeProvider: themeProvider),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.19,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 12.0, right: 12.0, bottom: 10.0),
+                child: ClayContainer(
+                  emboss: true,
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: 20.0,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          userQuestion,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            userAnswer,
-                            style: const TextStyle(fontSize: 24),
-                          ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          userAnswer,
+                          style: const TextStyle(fontSize: 24),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
+            ),
 
-              Expanded(
-                flex: 2,
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                  ),
-                  itemCount: buttons.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    // Clear Button
-                    if (index == 0) {
-                      return MyButton(
-                        butttonTapped: () {
-                          setState(() {
-                            userQuestion = '';
-                            userAnswer = '';
-                          });
-                        },
-                        buttonText: buttons[index],
-                      );
-                    }
-                    // Delete Button
-                    else if (index == 1) {
-                      return MyButton(
-                        butttonTapped: () {
-                          setState(() {
-                            if (userQuestion != '') {
-                              userQuestion = userQuestion.substring(
-                                  0, userQuestion.length - 1);
-                            }
-                          });
-                        },
-                        buttonText: buttons[index],
-                      );
-                    }
-                    // ANS Button (previous stored answer)
-                    else if (index == buttons.length - 2) {
-                      return MyButton(
-                        butttonTapped: () {
-                          setState(() {
-                            if (userQuestion != '' &&
-                                !userQuestion.endsWith('/') &&
-                                !userQuestion.endsWith('x') &&
-                                !userQuestion.endsWith('-') &&
-                                !userQuestion.endsWith('+') &&
-                                !userQuestion.endsWith('%')) {
-                              equalPresser();
-                            }
-                          });
-                        },
-                        buttonText: buttons[index],
-                      );
-                    }
-                    // Equal Button
-                    else if (index == buttons.length - 1) {
-                      return MyButton(
-                        butttonTapped: () {
-                          setState(() {
-                            if (userQuestion != '' &&
-                                !userQuestion.endsWith('/') &&
-                                !userQuestion.endsWith('x') &&
-                                !userQuestion.endsWith('-') &&
-                                !userQuestion.endsWith('+') &&
-                                !userQuestion.endsWith('%')) {
-                              equalPresser();
-                            }
-                          });
-                        },
-                        buttonText: buttons[index],
-                      );
-                    }
-                    // Rest of the buttons
-                    else {
-                      return MyButton(
-                        butttonTapped: () {
-                          setState(() {
-                            userQuestion += buttons[index];
-                          });
-                        },
-                        buttonText: buttons[index],
-                      );
-                    }
-                  },
+            Expanded(
+              flex: 2,
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
                 ),
+                itemCount: buttons.length,
+                itemBuilder: (BuildContext context, int index) {
+                  // Clear Button
+                  if (index == 0) {
+                    return MyButton(
+                      butttonTapped: () {
+                        setState(() {
+                          userQuestion = '';
+                          userAnswer = '';
+                        });
+                      },
+                      buttonText: buttons[index],
+                    );
+                  }
+                  // Delete Button
+                  else if (index == 1) {
+                    return MyButton(
+                      butttonTapped: () {
+                        setState(() {
+                          if (userQuestion != '') {
+                            userQuestion = userQuestion.substring(
+                                0, userQuestion.length - 1);
+                          }
+                        });
+                      },
+                      buttonText: buttons[index],
+                    );
+                  }
+                  // ANS Button (previous stored answer)
+                  else if (index == buttons.length - 2) {
+                    return MyButton(
+                      butttonTapped: () {
+                        setState(() {
+                          if (userQuestion != '' &&
+                              !userQuestion.endsWith('/') &&
+                              !userQuestion.endsWith('x') &&
+                              !userQuestion.endsWith('-') &&
+                              !userQuestion.endsWith('+') &&
+                              !userQuestion.endsWith('%')) {
+                            equalPresser();
+                          }
+                        });
+                      },
+                      buttonText: buttons[index],
+                    );
+                  }
+                  // Equal Button
+                  else if (index == buttons.length - 1) {
+                    return MyButton(
+                      butttonTapped: () {
+                        setState(() {
+                          if (userQuestion != '' &&
+                              !userQuestion.endsWith('/') &&
+                              !userQuestion.endsWith('x') &&
+                              !userQuestion.endsWith('-') &&
+                              !userQuestion.endsWith('+') &&
+                              !userQuestion.endsWith('%')) {
+                            equalPresser();
+                          }
+                        });
+                      },
+                      buttonText: buttons[index],
+                    );
+                  }
+                  // Rest of the buttons
+                  else {
+                    return MyButton(
+                      butttonTapped: () {
+                        setState(() {
+                          userQuestion += buttons[index];
+                        });
+                      },
+                      buttonText: buttons[index],
+                    );
+                  }
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
