@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   final List<String> buttons = [
     'C',
     '⌫',
-    '%', // '%'  = Modulo operator
+    '%',
     '/',
     '৯',
     '৮',
@@ -129,11 +129,13 @@ class _HomePageState extends State<HomePage> {
                       butttonTapped: () {
                         setState(() {
                           if (userQuestion != '' &&
+                              !userQuestion.startsWith('%') &&
+                              !userQuestion.startsWith('/') &&
+                              !userQuestion.startsWith('x') &&
                               !userQuestion.endsWith('/') &&
                               !userQuestion.endsWith('x') &&
                               !userQuestion.endsWith('-') &&
-                              !userQuestion.endsWith('+') &&
-                              !userQuestion.endsWith('%')) {
+                              !userQuestion.endsWith('+')) {
                             equalPresser();
                           }
                         });
@@ -161,13 +163,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  bool isOperator(String x) {
-    if (x == '%' || x == '/' || x == 'x' || x == '-' || x == '+' || x == '=') {
-      return true;
-    }
-    return false;
-  }
-
   void equalPresser() {
     String finalQuestion = userQuestion;
     String finalAnswer = '';
@@ -184,20 +179,63 @@ class _HomePageState extends State<HomePage> {
     finalQuestion = finalQuestion.replaceAll('০', '0');
     // replacing x
     finalQuestion = finalQuestion.replaceAll('x', '*');
-    // For percentage action un-comment the below line
-    //finalQuestion = finalQuestion.replaceAll('%', '*0.01');
-
-    Parser p = Parser();
-    Expression exp = p.parse(finalQuestion);
-    ContextModel cm = ContextModel();
-    double eval = exp.evaluate(EvaluationType.REAL, cm);
-    // splitting eval value to check no. of 0 after decimal
-    var splitEval = eval.toString().split('.')[1];
-    if (int.parse(splitEval) == 0) {
-      finalAnswer = eval.round().toString();
-    } else {
-      finalAnswer = eval.toStringAsFixed(2);
+    // replacing + with empty string
+    if (finalQuestion.startsWith('+')) {
+      finalQuestion = finalQuestion.replaceAll('+', '');
     }
+    // method for main calculation
+    _parsingQuestion(question) {
+      Parser p = Parser();
+      Expression exp = p.parse(question);
+      ContextModel cm = ContextModel();
+      double eval = exp.evaluate(EvaluationType.REAL, cm);
+      var splitEval = eval.toString().split('.')[1];
+      if (int.parse(splitEval) == 0) {
+        finalAnswer = eval.round().toString();
+      } else {
+        finalAnswer = eval.toStringAsFixed(2);
+      }
+    }
+
+    // if finalQuestion endswith '%' percentage sign
+    if (finalQuestion.endsWith('%')) {
+      if (finalQuestion.contains('-')) {
+        var firstSplit = finalQuestion.toString().split('-')[0];
+        var secondSplit =
+            finalQuestion.toString().split('-')[1].replaceAll('%', '');
+        String modifiedQuestion =
+            '$firstSplit-($firstSplit*($secondSplit/100))';
+
+        _parsingQuestion(modifiedQuestion);
+      } else if (finalQuestion.contains('+')) {
+        var firstSplit = finalQuestion.toString().split('+')[0];
+        var secondSplit =
+            finalQuestion.toString().split('+')[1].replaceAll('%', '');
+        String modifiedQuestion =
+            '$firstSplit+($firstSplit*($secondSplit/100))';
+
+        _parsingQuestion(modifiedQuestion);
+      } else if (finalQuestion.contains('*')) {
+        var firstSplit = finalQuestion.toString().split('*')[0];
+        var secondSplit =
+            finalQuestion.toString().split('*')[1].replaceAll('%', '');
+        String modifiedQuestion =
+            '$firstSplit*($firstSplit*($secondSplit/100))';
+
+        _parsingQuestion(modifiedQuestion);
+      }else if(finalQuestion.contains('/')){
+          var firstSplit = finalQuestion.toString().split('/')[0];
+        var secondSplit =
+            finalQuestion.toString().split('/')[1].replaceAll('%', '');
+        String modifiedQuestion =
+            '$firstSplit/($firstSplit*($secondSplit/100))';
+
+        _parsingQuestion(modifiedQuestion);
+      }
+    } else {
+      _parsingQuestion(finalQuestion);
+    }
+
     // convertion from en to bn
     finalAnswer = finalAnswer.replaceAll('1', '১');
     finalAnswer = finalAnswer.replaceAll('2', '২');
