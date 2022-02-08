@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           userAnswer,
                           style: TextStyle(
-                            fontSize: deviceHeight < 670 ? 24 : 32,
+                            fontSize: deviceHeight < 670 ? 24 : 30,
                           ),
                         ),
                       ),
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: deviceHeight > 670 ? 20 : 0),
+            SizedBox(height: deviceHeight < 670 ? 0 : 30),
             Expanded(
               flex: 4,
               child: GridView.builder(
