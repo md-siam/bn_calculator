@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class MyButton extends StatefulWidget {
-  final Color color;
   final String buttonText;
   final butttonTapped;
 
   const MyButton({
     Key? key,
-    required this.color,
     required this.buttonText,
     this.butttonTapped,
   }) : super(key: key);
@@ -49,7 +47,7 @@ class _MyButtonState extends State<MyButton> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             decoration: BoxDecoration(
-              color: widget.color,
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(20),
               boxShadow: _isElevated
                   ? [
@@ -69,14 +67,14 @@ class _MyButtonState extends State<MyButton> {
 
                       // light theme
                       BoxShadow(
-                        color: Colors.grey[500]!,
+                        color: Theme.of(context).shadowColor,
                         offset: const Offset(4, 4),
                         blurRadius: 15,
                         spreadRadius: 1,
                       ),
-                      const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
+                       BoxShadow(
+                        color: Theme.of(context).splashColor,
+                        offset: const Offset(-4, -4),
                         blurRadius: 15,
                         spreadRadius: 1,
                       )

@@ -16,8 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var userQuestion = '';
   var userAnswer = '';
-  final Color _color = Colors.grey[300]!;
-  //final Color _color = const Color(0xFF15202B);
 
   final List<String> buttons = [
     'C',
@@ -59,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                   child: ClayContainer(
                     emboss: true,
-                    color: _color,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: 20.0,
                     child: Column(
                       children: [
@@ -107,7 +105,6 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: _color,
                       );
                     }
                     // Delete Button
@@ -122,7 +119,6 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: _color,
                       );
                     }
                     // ANS Button (previous stored answer)
@@ -141,7 +137,6 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: _color,
                       );
                     }
                     // Equal Button
@@ -160,7 +155,6 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: _color,
                       );
                     }
                     // Rest of the buttons
@@ -172,7 +166,6 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: _color,
                       );
                     }
                   },

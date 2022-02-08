@@ -21,6 +21,9 @@ class MyTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
+    primaryColor: Colors.grey[300],
+    shadowColor: Colors.grey[500]!,
+    splashColor: Colors.white,
     scaffoldBackgroundColor: Colors.grey[300],
     textTheme: const TextTheme(
       headline5: TextStyle(color: Colors.black87),
@@ -39,6 +42,9 @@ class MyTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
+    primaryColor: const Color(0xFF15202B),
+    shadowColor: Colors.black,
+    splashColor: Colors.white12,
     scaffoldBackgroundColor: const Color(0xFF15202B),
     textTheme: const TextTheme(
       bodyText2: TextStyle(color: Color(0xFFFADA74)),
