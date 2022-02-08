@@ -30,7 +30,7 @@ class TopButtons extends StatelessWidget {
             infoDialog(context);
           },
           icon: const Icon(Icons.info_outline),
-          color: Colors.grey,
+          color: Theme.of(context).hintColor,
           iconSize: 38,
         ),
       ],

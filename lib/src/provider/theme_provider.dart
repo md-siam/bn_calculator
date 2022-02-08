@@ -21,10 +21,11 @@ class MyTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    primaryColor: Colors.grey[300],
-    shadowColor: Colors.grey[500]!,
-    splashColor: Colors.white,
     scaffoldBackgroundColor: Colors.grey[300],
+    primaryColor: Colors.grey[300], // using this for MyButton color
+    shadowColor: Colors.grey[500]!, // using this for MyButton shadow1 color
+    splashColor: Colors.white, // using this for MyButton shadow2 color
+    hintColor: Colors.grey, // using this for icon color
     textTheme: const TextTheme(
       headline5: TextStyle(color: Colors.black87),
       caption: TextStyle(color: Colors.blue),
@@ -42,10 +43,11 @@ class MyTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    primaryColor: const Color(0xFF15202B),
-    shadowColor: Colors.black,
-    splashColor: Colors.white12,
     scaffoldBackgroundColor: const Color(0xFF15202B),
+    primaryColor: const Color(0xFF15202B), // using this for MyButton color
+    shadowColor: Colors.black, // using this for MyButton shadow1 color
+    splashColor: Colors.white12, // using this for MyButton shadow2 color
+    hintColor: const Color(0xFFFADA74), // using this for icon color
     textTheme: const TextTheme(
       bodyText2: TextStyle(color: Color(0xFFFADA74)),
     ),

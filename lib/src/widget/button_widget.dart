@@ -51,28 +51,13 @@ class _MyButtonState extends State<MyButton> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: _isElevated
                   ? [
-                      // dark theme
-                      // const BoxShadow(
-                      //   color: Colors.black,
-                      //   offset: Offset(4, 4),
-                      //   blurRadius: 15,
-                      //   spreadRadius: 1,
-                      // ),
-                      // const BoxShadow(
-                      //   color: Colors.white12,
-                      //   offset: Offset(-4, -4),
-                      //   blurRadius: 15,
-                      //   spreadRadius: 1,
-                      // )
-
-                      // light theme
                       BoxShadow(
                         color: Theme.of(context).shadowColor,
                         offset: const Offset(4, 4),
                         blurRadius: 15,
                         spreadRadius: 1,
                       ),
-                       BoxShadow(
+                      BoxShadow(
                         color: Theme.of(context).splashColor,
                         offset: const Offset(-4, -4),
                         blurRadius: 15,
