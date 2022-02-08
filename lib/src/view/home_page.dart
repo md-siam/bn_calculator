@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     '+',
     '০',
     '.',
-    'উত্তর',
+    '০০০',
     '=',
   ];
 
@@ -123,24 +123,6 @@ class _HomePageState extends State<HomePage> {
                       buttonText: buttons[index],
                     );
                   }
-                  // ANS Button (previous stored answer)
-                  else if (index == buttons.length - 2) {
-                    return MyButton(
-                      butttonTapped: () {
-                        setState(() {
-                          if (userQuestion != '' &&
-                              !userQuestion.endsWith('/') &&
-                              !userQuestion.endsWith('x') &&
-                              !userQuestion.endsWith('-') &&
-                              !userQuestion.endsWith('+') &&
-                              !userQuestion.endsWith('%')) {
-                            equalPresser();
-                          }
-                        });
-                      },
-                      buttonText: buttons[index],
-                    );
-                  }
                   // Equal Button
                   else if (index == buttons.length - 1) {
                     return MyButton(
@@ -180,13 +162,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   bool isOperator(String x) {
-    if (x == '%' ||
-        x == '/' ||
-        x == '%' ||
-        x == 'x' ||
-        x == '-' ||
-        x == '+' ||
-        x == '=') {
+    if (x == '%' || x == '/' || x == 'x' || x == '-' || x == '+' || x == '=') {
       return true;
     }
     return false;
@@ -215,7 +191,13 @@ class _HomePageState extends State<HomePage> {
     Expression exp = p.parse(finalQuestion);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
-    finalAnswer = eval.toString();
+    // splitting eval value to check no. of 0 after decimal
+    var splitEval = eval.toString().split('.')[1];
+    if (int.parse(splitEval) == 0) {
+      finalAnswer = eval.round().toString();
+    } else {
+      finalAnswer = eval.toStringAsFixed(2);
+    }
     // convertion from en to bn
     finalAnswer = finalAnswer.replaceAll('1', '১');
     finalAnswer = finalAnswer.replaceAll('2', '২');
