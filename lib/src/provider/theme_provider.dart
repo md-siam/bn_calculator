@@ -21,9 +21,9 @@ class MyTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    scaffoldBackgroundColor: Colors.grey[300],
-    primaryColor: Colors.grey[300], // using this for MyButton color
-    shadowColor: Colors.grey[500]!, // using this for MyButton shadow1 color
+    scaffoldBackgroundColor: const Color(0xFFE6EDF2),
+    primaryColor: const Color(0xFFE6EDF2), // using this for MyButton color
+    shadowColor: const Color.fromARGB(255, 180, 193, 203), // using this for MyButton shadow1 color
     splashColor: Colors.white, // using this for MyButton shadow2 color
     iconTheme: const IconThemeData(color: Color(0xFF0C91D6)),
     textTheme: const TextTheme(
