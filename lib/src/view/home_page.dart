@@ -58,8 +58,8 @@ class _HomePageState extends State<HomePage> {
               flex: deviceHeight < 670 ? 1 : 2,
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: 10.0,
-                  right: 10.0,
+                  left: 15.0,
+                  right: 12.0,
                   bottom: 5.0,
                 ),
                 child: ClayContainer(
