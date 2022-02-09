@@ -1,11 +1,11 @@
-import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
 import 'package:provider/provider.dart';
+import 'package:clay_containers/clay_containers.dart';
+import 'package:math_expressions/math_expressions.dart';
 
-import '../provider/theme_provider.dart';
-import '../widget/button_widget.dart';
 import '../widget/top_buttons.dart';
+import '../widget/button_widget.dart';
+import '../provider/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

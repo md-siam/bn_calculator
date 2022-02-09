@@ -1,6 +1,6 @@
-import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:day_night_switcher/day_night_switcher.dart';
 
 import '../provider/theme_provider.dart';
 
