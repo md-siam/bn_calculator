@@ -68,24 +68,36 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: 20.0,
                   child: Column(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(10.0),
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          userQuestion,
-                          style: TextStyle(
-                            fontSize: deviceHeight < 670 ? 24 : 34,
-                            fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: FittedBox(
+                            child: Container(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                userQuestion,
+                                style: TextStyle(
+                                  fontSize: deviceHeight < 670 ? 24 : 34,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(10.0),
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          userAnswer,
-                          style: TextStyle(
-                            fontSize: deviceHeight < 670 ? 24 : 50,
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: FittedBox(
+                            child: Container(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                userAnswer,
+                                style: TextStyle(
+                                  fontSize: deviceHeight < 670 ? 24 : 50,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -186,12 +198,12 @@ class _HomePageState extends State<HomePage> {
     finalQuestion = finalQuestion.replaceAll('০', '0');
     // replacing x
     finalQuestion = finalQuestion.replaceAll('x', '*');
-    // replacing + with empty string
+    // if start with + then, replacing + with empty string
     if (finalQuestion.startsWith('+')) {
       finalQuestion = finalQuestion.replaceAll('+', '');
     }
     // method for main calculation
-    _parsingQuestion(question) {
+    _parsingQuestionForCalc(question) {
       Parser p = Parser();
       Expression exp = p.parse(question);
       ContextModel cm = ContextModel();
@@ -213,7 +225,7 @@ class _HomePageState extends State<HomePage> {
         String modifiedQuestion =
             '$firstSplit-($firstSplit*($secondSplit/100))';
 
-        _parsingQuestion(modifiedQuestion);
+        _parsingQuestionForCalc(modifiedQuestion);
       } else if (finalQuestion.contains('+')) {
         var firstSplit = finalQuestion.toString().split('+')[0];
         var secondSplit =
@@ -221,7 +233,7 @@ class _HomePageState extends State<HomePage> {
         String modifiedQuestion =
             '$firstSplit+($firstSplit*($secondSplit/100))';
 
-        _parsingQuestion(modifiedQuestion);
+        _parsingQuestionForCalc(modifiedQuestion);
       } else if (finalQuestion.contains('*')) {
         var firstSplit = finalQuestion.toString().split('*')[0];
         var secondSplit =
@@ -229,7 +241,7 @@ class _HomePageState extends State<HomePage> {
         String modifiedQuestion =
             '$firstSplit*($firstSplit*($secondSplit/100))';
 
-        _parsingQuestion(modifiedQuestion);
+        _parsingQuestionForCalc(modifiedQuestion);
       } else if (finalQuestion.contains('/')) {
         var firstSplit = finalQuestion.toString().split('/')[0];
         var secondSplit =
@@ -237,10 +249,10 @@ class _HomePageState extends State<HomePage> {
         String modifiedQuestion =
             '$firstSplit/($firstSplit*($secondSplit/100))';
 
-        _parsingQuestion(modifiedQuestion);
+        _parsingQuestionForCalc(modifiedQuestion);
       }
     } else {
-      _parsingQuestion(finalQuestion);
+      _parsingQuestionForCalc(finalQuestion);
     }
 
     // convertion from en to bn
