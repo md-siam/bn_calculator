@@ -17,7 +17,7 @@ class TopButtons extends StatelessWidget {
       children: [
         const SizedBox(width: 10),
         DayNightSwitcherIcon(
-          dayBackgroundColor: Colors.blueGrey,
+          dayBackgroundColor: const Color(0xFF0C91D6),
           isDarkModeEnabled: themeProvider.isDarkMode,
           onStateChanged: (value) {
             final provider = Provider.of<ThemeProvider>(context, listen: false);

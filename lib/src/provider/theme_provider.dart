@@ -25,12 +25,12 @@ class MyTheme {
     primaryColor: Colors.grey[300], // using this for MyButton color
     shadowColor: Colors.grey[500]!, // using this for MyButton shadow1 color
     splashColor: Colors.white, // using this for MyButton shadow2 color
-    iconTheme: const IconThemeData(color: Colors.blueGrey),
+    iconTheme: const IconThemeData(color: Color(0xFF0C91D6)),
     textTheme: const TextTheme(
       headline5: TextStyle(color: Colors.black87),
       caption: TextStyle(color: Colors.blueAccent),
       subtitle1: TextStyle(color: Colors.black),
-      bodyText2: TextStyle(color: Colors.blueGrey),
+      bodyText2: TextStyle(color: Color(0xFF0C91D6)),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(primary: Colors.blueAccent),
