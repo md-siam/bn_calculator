@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
             // top row buttons containing darkmode & info
             TopButtons(themeProvider: themeProvider),
             Expanded(
-              flex: 1,
+              flex: deviceHeight < 670 ? 1 : 2,
               child: Padding(
                 padding: const EdgeInsets.only(
                   left: 10.0,
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           userQuestion,
                           style: TextStyle(
-                            fontSize: deviceHeight < 670 ? 24 : 30,
+                            fontSize: deviceHeight < 670 ? 24 : 34,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           userAnswer,
                           style: TextStyle(
-                            fontSize: deviceHeight < 670 ? 24 : 30,
+                            fontSize: deviceHeight < 670 ? 24 : 50,
                           ),
                         ),
                       ),
@@ -93,9 +93,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: deviceHeight < 670 ? 0 : 30),
+            //SizedBox(height: deviceHeight < 670 ? 0 : 30),
             Expanded(
-              flex: 4,
+              flex: deviceHeight < 670 ? 4 : 6,
               child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
