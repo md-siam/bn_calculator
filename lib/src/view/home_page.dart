@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             // top row buttons containing darkmode & info
             TopButtons(themeProvider: themeProvider),
+            SizedBox(height: deviceHeight < 670 ? 0 : 10),
             Expanded(
               flex: deviceHeight < 670 ? 1 : 2,
               child: Padding(

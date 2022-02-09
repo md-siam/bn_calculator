@@ -37,6 +37,7 @@ class _MyButtonState extends State<MyButton> {
 
   @override
   Widget build(BuildContext context) {
+    double deviceHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: widget.butttonTapped,
       child: Padding(
@@ -69,8 +70,8 @@ class _MyButtonState extends State<MyButton> {
             child: Center(
               child: Text(
                 widget.buttonText,
-                style: const TextStyle(
-                  fontSize: 30,
+                style: TextStyle(
+                  fontSize: deviceHeight < 670 ? 30 : 34,
                   fontWeight: FontWeight.bold,
                 ),
               ),
