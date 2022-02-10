@@ -33,7 +33,11 @@ class TopButtons extends StatelessWidget {
         const Expanded(child: SizedBox()),
         IconButton(
           splashRadius: 1,
-          onPressed: () {
+          onPressed: () async {
+            await audioCache.play(
+              'info_sound_2.wav',
+              mode: PlayerMode.LOW_LATENCY,
+            );
             infoDialog(context);
           },
           icon: const Icon(Icons.info_outline),

@@ -22,18 +22,18 @@ class _HomePageState extends State<HomePage> {
     'C',
     '⌫',
     '%',
-    '/',
-    '৯',
-    '৮',
+    '÷',
     '৭',
+    '৮',
+    '৯',
     'x',
-    '৬',
-    '৫',
     '৪',
+    '৫',
+    '৬',
     '-',
-    '৩',
-    '২',
     '১',
+    '২',
+    '৩',
     '+',
     '০',
     '.',
@@ -151,9 +151,9 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           if (userQuestion != '' &&
                               !userQuestion.startsWith('%') &&
-                              !userQuestion.startsWith('/') &&
+                              !userQuestion.startsWith('÷') &&
                               !userQuestion.startsWith('x') &&
-                              !userQuestion.endsWith('/') &&
+                              !userQuestion.endsWith('÷') &&
                               !userQuestion.endsWith('x') &&
                               !userQuestion.endsWith('-') &&
                               !userQuestion.endsWith('+')) {
@@ -199,6 +199,7 @@ class _HomePageState extends State<HomePage> {
     finalQuestion = finalQuestion.replaceAll('৯', '9');
     finalQuestion = finalQuestion.replaceAll('০', '0');
     // replacing x
+    finalQuestion = finalQuestion.replaceAll('÷', '/');
     finalQuestion = finalQuestion.replaceAll('x', '*');
     // if start with + then, replacing + with empty string
     if (finalQuestion.startsWith('+')) {
