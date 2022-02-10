@@ -3,6 +3,7 @@ import 'package:audioplayers/audioplayers.dart';
 
 class MyButton extends StatefulWidget {
   final String buttonText;
+  // ignore: prefer_typing_uninitialized_variables
   final butttonTapped;
 
   const MyButton({
