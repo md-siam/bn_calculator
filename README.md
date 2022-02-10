@@ -1,3 +1,5 @@
+<img src="screenshots/badges/built-with-love.svg" height="28px"/>&nbsp;&nbsp;<img src="screenshots/badges/flutter-dart.svg" height="28px" />&nbsp;&nbsp;<a href="lib/src/widget/button_widget.dart"><img src="screenshots/badges/license-MIT.svg" height="28px" /></a>
+
 # Bengali Numeric (BN) Calculator
 
 <img align="right" src="assets/images/playstore.png" height="190"></img>
