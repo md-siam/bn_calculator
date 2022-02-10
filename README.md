@@ -1,7 +1,21 @@
-# Bengali Calculator
+# Bengali Numeric (BN) Calculator
 
 <img align="right" src="assets/images/playstore.png" height="190"></img>
-Neomorphic design Bengali calculator will be on the app store before 21st February, in celebration of International Mother Language Day
+Bengali Numeric, in short, BN Calculator is designed with a custom [neumorphic button](lib/src/widget/button_widget.dart) class, with a custom button press sound. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar.
+
+I will be releasing this application on the Google Play store on 21st February to celebrate International Mother Language Day. If I get enough positive responses from the users, then I will release it on Apple AppStore.
+
+Note: It's an open-source project; hence anyone can use this code according to the [MIT License](https://choosealicense.com/licenses/mit/) rules.
+
+## Third-Party Packages:
+
+1. For state-management: [provider: ^6.0.2](https://pub.dev/packages/provider)
+2. For modern neumorphic containers: [clay_containers: ^0.3.2](https://pub.dev/packages/clay_containers)
+3. For dark mode switcher: [day_night_switcher: ^0.2.0+1](https://pub.dev/packages/day_night_switcher)
+4. For button click playing sound: [audioplayers: ^0.20.1](https://pub.dev/packages/audioplayers)
+5. For mathematical operation: [math_expressions: ^2.3.0](https://pub.dev/packages/math_expressions)
+
+   \*\*Thanks to those developers for their awesome packages.\*\*
 
 ## Screenshots
 
@@ -15,18 +29,3 @@ Neomorphic design Bengali calculator will be on the app store before 21st Februa
     <td><img align="right" src="screenshots/darkMode.gif" height="500"></img></td>
   </tr>
   </table>
-
-## Packages Used
-
-```
-  # For state-management
-  provider: ^6.0.2
-  # For modern neumorphic containers
-  clay_containers: ^0.3.2
-  # For dark mode switcher
-  day_night_switcher: ^0.2.0+1
-  # For button click playing sound
-  audioplayers: ^0.20.1
-  # For mathematical operation
-  math_expressions: ^2.3.0
-```
