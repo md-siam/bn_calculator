@@ -76,8 +76,9 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
                                 userQuestion,
-                                style: TextStyle(
-                                  fontSize: deviceHeight < 670 ? 24 : 34,
+                                style: const TextStyle(
+                                  //fontSize: deviceHeight < 670 ? 24 : 34,
+                                  fontSize: 40,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -93,8 +94,9 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
                                 userAnswer,
-                                style: TextStyle(
-                                  fontSize: deviceHeight < 670 ? 24 : 50,
+                                style: const TextStyle(
+                                  //fontSize: deviceHeight < 670 ? 24 : 50,
+                                  fontSize: 60,
                                 ),
                               ),
                             ),

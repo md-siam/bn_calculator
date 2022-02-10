@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 
 import '../provider/theme_provider.dart';
 
 class TopButtons extends StatelessWidget {
+  final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
   final ThemeProvider themeProvider;
-  const TopButtons({
+  TopButtons({
     Key? key,
     required this.themeProvider,
   }) : super(key: key);
@@ -19,12 +21,16 @@ class TopButtons extends StatelessWidget {
         DayNightSwitcherIcon(
           dayBackgroundColor: const Color(0xFF0C91D6),
           isDarkModeEnabled: themeProvider.isDarkMode,
-          onStateChanged: (value) {
+          onStateChanged: (value) async {
+            await audioCache.play(
+              themeProvider.isDarkMode ? 'owl_light.wav' : 'owl_dark.wav',
+              mode: PlayerMode.LOW_LATENCY,
+            );
             final provider = Provider.of<ThemeProvider>(context, listen: false);
             provider.toggleTheme(value);
           },
         ),
-        Expanded(child: Column(children: const [SizedBox()])),
+        const Expanded(child: SizedBox()),
         IconButton(
           splashRadius: 1,
           onPressed: () {
