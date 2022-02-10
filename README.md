@@ -1,9 +1,10 @@
 # Bengali Numeric (BN) Calculator
 
 <img align="right" src="assets/images/playstore.png" height="190"></img>
-Bengali Numeric, in short, BN Calculator is designed with a custom [neumorphic button](lib/src/widget/button_widget.dart) class, with a custom button press sound. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar.
 
-I will be releasing this application on the Google Play store on 21st February to celebrate International Mother Language Day. If I get enough positive responses from the users, then I will release it on Apple AppStore.
+<p align="justify" >
+Bengali Numeric Calculator, in short, BN Calculator is designed with a custom <a href="lib/src/widget/button_widget.dart">neumorphic button</a> class, with a custom button press sound, that imitates the sound of a physical calculator. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar. I will be releasing this application on the Google Play store on 21st February to celebrate International Mother Language Day. If I get enough positive responses from the users, then I will release it on Apple AppStore.
+</p>
 
 Note: It's an open-source project; hence anyone can use this code according to the [MIT License](https://choosealicense.com/licenses/mit/) rules.
 
