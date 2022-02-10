@@ -12,10 +12,10 @@ class ThemeProvider extends ChangeNotifier {
 
 class MyTheme {
   static final lightTheme = ThemeData.light().copyWith(
-    appBarTheme: AppBarTheme(
-      color: Colors.grey[300],
-      iconTheme: const IconThemeData(color: Colors.black),
-      titleTextStyle: const TextStyle(
+    appBarTheme: const AppBarTheme(
+      color: Color(0xFFE6EDF2),
+      iconTheme: IconThemeData(color: Colors.black),
+      titleTextStyle: TextStyle(
         color: Colors.black,
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -23,7 +23,8 @@ class MyTheme {
     ),
     scaffoldBackgroundColor: const Color(0xFFE6EDF2),
     primaryColor: const Color(0xFFE6EDF2), // using this for MyButton color
-    shadowColor: const Color.fromARGB(255, 180, 193, 203), // using this for MyButton shadow1 color
+    shadowColor: const Color.fromARGB(
+        255, 180, 193, 203), // using this for MyButton shadow1 color
     splashColor: Colors.white, // using this for MyButton shadow2 color
     iconTheme: const IconThemeData(color: Color(0xFF0C91D6)),
     textTheme: const TextTheme(
