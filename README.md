@@ -11,9 +11,9 @@ Note: It's an open-source project; hence anyone can use this code according to t
 
 1. For state-management: [provider: ^6.0.2](https://pub.dev/packages/provider)
 2. For modern neumorphic containers: [clay_containers: ^0.3.2](https://pub.dev/packages/clay_containers)
-3. For dark mode switcher: [day_night_switcher: ^0.2.0+1](https://pub.dev/packages/day_night_switcher)
-4. For button click playing sound: [audioplayers: ^0.20.1](https://pub.dev/packages/audioplayers)
-5. For mathematical operation: [math_expressions: ^2.3.0](https://pub.dev/packages/math_expressions)
+3. For animated switch to activate dark/light mode: [day_night_switcher: ^0.2.0+1](https://pub.dev/packages/day_night_switcher)
+4. For playing 'button click' sound: [audioplayers: ^0.20.1](https://pub.dev/packages/audioplayers)
+5. For executing mathematical operations: [math_expressions: ^2.3.0](https://pub.dev/packages/math_expressions)
 
    \*\*Thanks to those developers for their awesome packages.\*\*
 

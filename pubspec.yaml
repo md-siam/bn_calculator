@@ -37,11 +37,11 @@ dependencies:
   provider: ^6.0.2
   # For modern neumorphic containers
   clay_containers: ^0.3.2
-  # For dark mode switcher
+  # For animated switch to activate dark/light mode
   day_night_switcher: ^0.2.0+1
-  # For button click playing sound
+  # For playing 'button click' sound
   audioplayers: ^0.20.1
-  # For mathematical operation
+  # For executing mathematical operations
   math_expressions: ^2.3.0
 
 dev_dependencies:
