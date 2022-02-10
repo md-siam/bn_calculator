@@ -1,4 +1,4 @@
-<img src="screenshots/badges/built-with-love.svg" height="28px"/>&nbsp;&nbsp;<img src="screenshots/badges/flutter-dart.svg" height="28px" />&nbsp;&nbsp;<a href="https://choosealicense.com/licenses/mit/"><img src="screenshots/badges/license-MIT.svg" height="28px" /></a>
+<img src="screenshots/badges/built-with-love.svg" height="28px"/>&nbsp;&nbsp;<img src="screenshots/badges/flutter-dart.svg" height="28px" />&nbsp;&nbsp;<a href="https://choosealicense.com/licenses/mit/" target="_blank"><img src="screenshots/badges/license-MIT.svg" height="28px" /></a>
 
 # Bengali Numeric (BN) Calculator
 
@@ -36,6 +36,6 @@ Note: It's an open-source project; hence anyone can use this code according to t
 ## Stores
 
 <p align="center">
-<a href="https://play.google.com/store/apps"><img src="screenshots/stores_logos/GooglePlay.png" height="50px" /></a>
-<a href="https://www.apple.com/app-store/"><img src="screenshots/stores_logos/AppStore.png" height="50px" /></a>
+<a href="https://play.google.com/store/apps" target="_blank"><img src="screenshots/stores_logos/GooglePlay.png" height="50px" /></a>
+<a href="https://www.apple.com/app-store/" target="_blank"><img src="screenshots/stores_logos/AppStore.png" height="50px" /></a>
 </p>
