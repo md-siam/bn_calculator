@@ -7,14 +7,14 @@ import '../widget/top_buttons.dart';
 import '../widget/button_widget.dart';
 import '../provider/theme_provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MyCalculator extends StatefulWidget {
+  const MyCalculator({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MyCalculator> createState() => _MyCalculatorState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MyCalculatorState extends State<MyCalculator> {
   var userQuestion = '';
   var userAnswer = '';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'src/provider/theme_provider.dart';
-import 'src/view/home_page.dart';
+import 'src/view/calculator.dart';
 
 void main() {
   // For disabling landscape view
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             theme: MyTheme.lightTheme,
             darkTheme: MyTheme.darkTheme,
             themeMode: themeProvider.themeMode,
-            home: const HomePage(),
+            home: const MyCalculator(),
           );
         },
       );
