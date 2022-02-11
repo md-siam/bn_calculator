@@ -43,6 +43,8 @@ dependencies:
   audioplayers: ^0.20.1
   # For executing mathematical operations
   math_expressions: ^2.3.0
+  # For number formatting
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

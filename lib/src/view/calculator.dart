@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:clay_containers/clay_containers.dart';
@@ -205,17 +206,30 @@ class _MyCalculatorState extends State<MyCalculator> {
     if (finalQuestion.startsWith('+')) {
       finalQuestion = finalQuestion.replaceAll('+', '');
     }
-    // method for main calculation
+
+    // this is the method for calculations
     _parsingQuestionForCalc(question) {
       Parser p = Parser();
       Expression exp = p.parse(question);
       ContextModel cm = ContextModel();
       double eval = exp.evaluate(EvaluationType.REAL, cm);
-      var splitEval = eval.toString().split('.')[1];
-      if (int.parse(splitEval) == 0) {
-        finalAnswer = eval.round().toString();
+      var splitEval0 = eval.toString().split('.')[0]; // numbers before decimal point
+      var splitEval1 = eval.toString().split('.')[1]; // numbers after decimal point
+
+      if (int.parse(splitEval1) == 0) {
+        if ((int.parse(splitEval0)) ~/ 1000 != 0) {
+          var intlFormatter = NumberFormat('#,##,000');
+          finalAnswer = intlFormatter.format(eval.round()).toString();
+        } else {
+          finalAnswer = eval.round().toString();
+        }
       } else {
-        finalAnswer = eval.toStringAsFixed(2);
+        if ((int.parse(splitEval0)) ~/ 1000 != 0) {
+          var intlFormatter = NumberFormat('#,##,000.00');
+          finalAnswer = intlFormatter.format(eval);
+        } else {
+          finalAnswer = eval.toStringAsFixed(2);
+        }
       }
     }
 

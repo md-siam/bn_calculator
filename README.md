@@ -17,6 +17,7 @@ Note: It's an open-source project; hence anyone can use this code according to t
 3. For animated switch to activate dark/light mode: [day_night_switcher: ^0.2.0+1](https://pub.dev/packages/day_night_switcher)
 4. For playing 'button click' sound: [audioplayers: ^0.20.1](https://pub.dev/packages/audioplayers)
 5. For executing mathematical operations: [math_expressions: ^2.3.0](https://pub.dev/packages/math_expressions)
+6. For number formatting: [intl: ^0.17.0](https://pub.dev/packages/intl)
 
    \*\*Thanks to those developers for their awesome packages.\*\*
 
