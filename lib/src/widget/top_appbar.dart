@@ -54,14 +54,14 @@ class TopButtons extends StatelessWidget {
         Icons.calculate_outlined,
         size: 80,
       ),
-      applicationName: 'Bengali Calculator',
+      applicationName: 'BN Calculator',
       applicationVersion: '0.2.1',
       applicationLegalese: '©2022, mdsiam.xyz',
       children: const [
         Padding(
-          padding: EdgeInsets.only(top: 15.0),
+          padding: EdgeInsets.only(top: 1.0),
           child: Text(
-            'Neomorphic design Bengali calculator will be on the app store before 21st February, in celebration of International Mother Language Day',
+            'This app is designed with a custom neumorphic button, with a custom button press sound, that imitates the sound of a physical calculator. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar.',
             textAlign: TextAlign.justify,
           ),
         ),
