@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -9,14 +10,12 @@ class CustomDropdownMenu extends StatefulWidget {
   final List<Icon> icons;
   final BorderRadius? borderRadius;
   final Color backgroundColor;
-  final Color iconColor;
   final ValueChanged<int>? onChange;
   CustomDropdownMenu({
     Key? key,
     required this.icons,
-    this.borderRadius,
+    required this.borderRadius,
     required this.backgroundColor,
-    this.iconColor = Colors.black,
     this.onChange,
   }) : super(key: key);
 
@@ -75,16 +74,15 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
   Widget build(BuildContext context) {
     return Container(
       key: _key,
-      decoration: BoxDecoration(
-        borderRadius: _borderRadius,
-      ),
+      decoration: BoxDecoration(borderRadius: _borderRadius),
+      // burger menu icon property
       child: IconButton(
         splashRadius: 1,
         icon: AnimatedIcon(
           icon: AnimatedIcons.menu_close,
           progress: _animationController,
         ),
-        iconSize: 30,
+        iconSize: 35,
         onPressed: () async {
           if (isMenuOpen) {
             await widget.audioCache.play(
@@ -108,7 +106,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
     return OverlayEntry(
       builder: (context) {
         return Positioned(
-          top: buttonPosition.dy + buttonSize.height,
+          top: buttonPosition.dy + buttonSize.height - 13.0,
           left: buttonPosition.dx,
           width: buttonSize.width,
           child: Stack(
@@ -118,12 +116,12 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
                 child: Material(
                   elevation: 10,
                   color: Colors.transparent,
+                  shadowColor: Theme.of(context).shadowColor,
                   shape: ShapeBorder.lerp(
                     const CircleBorder(),
                     const CircleBorder(),
                     1.0,
                   ),
-                  shadowColor: Theme.of(context).shadowColor,
                   child: ClipPath(
                     clipper: ArrowClipper(),
                     child: Container(
@@ -181,7 +179,7 @@ void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const HistoryPage()),
+        CupertinoPageRoute(builder: (context) => const HistoryPage()),
       );
       break;
 

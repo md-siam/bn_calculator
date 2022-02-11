@@ -36,8 +36,8 @@ class TopButtons extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           backgroundColor: Theme.of(context).primaryColor,
           icons: const [
-            Icon(Icons.history),
-            Icon(Icons.info_outline_rounded),
+            Icon(Icons.history, size: 30),
+            Icon(Icons.info_outline_rounded, size: 30),
           ],
           onChange: (index) {},
         ),

@@ -14,10 +14,10 @@ class MyTheme {
   static final lightTheme = ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
       color: Color(0xFFE6EDF2),
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Color(0xFF0C91D6)),
       titleTextStyle: TextStyle(
-        color: Colors.black,
-        fontSize: 20,
+        color: Color(0xFF0C91D6),
+        fontSize: 23,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -40,10 +40,10 @@ class MyTheme {
   static final darkTheme = ThemeData.dark().copyWith(
     appBarTheme: const AppBarTheme(
       color: Color(0xFF253341),
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: Color(0xFFFADA74)),
       titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontSize: 20,
+        color: Color(0xFFFADA74),
+        fontSize: 23,
         fontWeight: FontWeight.bold,
       ),
     ),
