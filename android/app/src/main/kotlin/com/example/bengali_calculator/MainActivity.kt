@@ -1,4 +1,4 @@
-package com.example.bengali_calculator
+package com.example.bn_calculator
 
 import io.flutter.embedding.android.FlutterActivity
 

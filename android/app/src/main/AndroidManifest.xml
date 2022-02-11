@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bengali_calculator">
+    package="com.example.bn_calculator">
    <application
-        android:label="bengali_calculator"
+        android:label="BN Calculator"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
