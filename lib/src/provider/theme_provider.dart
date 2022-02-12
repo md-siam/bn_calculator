@@ -33,6 +33,7 @@ class MyTheme {
       subtitle1: TextStyle(color: Colors.black),
       bodyText2: TextStyle(color: Color(0xFF0C91D6)),
     ),
+    hoverColor: const Color(0xFFE6EDF2), // using for popup menu
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(primary: Colors.blueAccent),
     ),
@@ -57,6 +58,7 @@ class MyTheme {
     ),
     dialogBackgroundColor: const Color(0xFF253341),
     cardColor: const Color(0xFF15202B),
+    hoverColor: const Color.fromARGB(255, 28, 43, 59), // using for popup menu
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(primary: const Color(0xFFFADA74)),
     ),

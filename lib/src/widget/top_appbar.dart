@@ -34,7 +34,7 @@ class TopButtons extends StatelessWidget {
         const Expanded(child: SizedBox()),
         CustomDropdownMenu(
           borderRadius: BorderRadius.circular(10),
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).hoverColor,
           icons: const [
             Icon(Icons.history, size: 30),
             Icon(Icons.info_outline_rounded, size: 30),
