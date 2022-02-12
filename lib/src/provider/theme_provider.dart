@@ -11,6 +11,7 @@ class ThemeProvider extends ChangeNotifier {
 }
 
 class MyTheme {
+  //* L  I  G  H  T     T  H  E  M  E *//
   static final lightTheme = ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
       color: Color(0xFFE6EDF2),
@@ -20,6 +21,9 @@ class MyTheme {
         fontSize: 23,
         fontWeight: FontWeight.bold,
       ),
+    ),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: const Color.fromARGB(61, 71, 173, 224),
     ),
     scaffoldBackgroundColor: const Color(0xFFE6EDF2),
     primaryColor: const Color(0xFFE6EDF2), // using this for MyButton color
@@ -38,6 +42,7 @@ class MyTheme {
       style: TextButton.styleFrom(primary: Colors.blueAccent),
     ),
   );
+  //* D  A  R  K     T  H  E  M  E *//
   static final darkTheme = ThemeData.dark().copyWith(
     appBarTheme: const AppBarTheme(
       color: Color(0xFF253341),
@@ -47,6 +52,9 @@ class MyTheme {
         fontSize: 23,
         fontWeight: FontWeight.bold,
       ),
+    ),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: const Color.fromARGB(184, 250, 219, 116),
     ),
     scaffoldBackgroundColor: const Color(0xFF15202B),
     primaryColor: const Color(0xFF15202B), // using this for MyButton color
