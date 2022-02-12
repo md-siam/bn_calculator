@@ -18,8 +18,8 @@ class MyCalculator extends StatefulWidget {
 class _MyCalculatorState extends State<MyCalculator> {
   var userQuestion = '';
   var userAnswer = '';
-  final List<String> questionAnswer = <String>[''];
   int questionAnswerIndex = 0;
+  final List<String> questionAnswer = <String>[''];
   final List<String> buttons = [
     'C',
     '⌫',
