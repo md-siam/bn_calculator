@@ -11,11 +11,13 @@ class CustomDropdownMenu extends StatefulWidget {
   final BorderRadius? borderRadius;
   final Color backgroundColor;
   final ValueChanged<int>? onChange;
+  List<String> calcHistory = [];
   CustomDropdownMenu({
     Key? key,
     required this.icons,
     required this.borderRadius,
     required this.backgroundColor,
+    required this.calcHistory,
     this.onChange,
   }) : super(key: key);
 
@@ -151,7 +153,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
                         (index) {
                           return GestureDetector(
                             onTap: () {
-                              onSelected(context, index);
+                              onSelected(context, index, widget.calcHistory);
                               //widget.onChange!(index);
                               closeMenu();
                             },
@@ -175,12 +177,18 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
   }
 }
 
-void onSelected(BuildContext context, int item) {
+void onSelected(BuildContext context, int item, List<String> _calcHistory) {
   switch (item) {
     case 0:
-      Navigator.of(context).push(
-        CupertinoPageRoute(builder: (context) => const HistoryPage()),
-      );
+      if (!_calcHistory.remove('')) {
+        Navigator.of(context).push(
+          CupertinoPageRoute(
+            builder: (context) => HistoryPage(
+              calcHistory: _calcHistory.reversed.toList(),
+            ),
+          ),
+        );
+      }
       break;
 
     case 1:

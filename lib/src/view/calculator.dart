@@ -18,7 +18,8 @@ class MyCalculator extends StatefulWidget {
 class _MyCalculatorState extends State<MyCalculator> {
   var userQuestion = '';
   var userAnswer = '';
-
+  final List<String> questionAnswer = <String>[''];
+  int questionAnswerIndex = 0;
   final List<String> buttons = [
     'C',
     '⌫',
@@ -53,7 +54,10 @@ class _MyCalculatorState extends State<MyCalculator> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // top row buttons containing darkmode & info
-            TopButtons(themeProvider: themeProvider),
+            TopButtons(
+              themeProvider: themeProvider,
+              calcHistory: questionAnswer,
+            ),
             SizedBox(height: deviceHeight < 670 ? 0 : 10),
             Expanded(
               flex: deviceHeight < 670 ? 1 : 2,
@@ -74,7 +78,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                           alignment: Alignment.topLeft,
                           child: FittedBox(
                             child: Container(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.only(left: 10.0),
                               child: Text(
                                 userQuestion,
                                 style: const TextStyle(
@@ -92,7 +96,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                           alignment: Alignment.bottomRight,
                           child: FittedBox(
                             child: Container(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.only(right: 20.0),
                               child: Text(
                                 userAnswer,
                                 style: const TextStyle(
@@ -287,5 +291,11 @@ class _MyCalculatorState extends State<MyCalculator> {
     finalAnswer = finalAnswer.replaceAll('9', '৯');
     finalAnswer = finalAnswer.replaceAll('0', '০');
     userAnswer = finalAnswer;
+
+    // inserting into the questionAnswer list for displaying it to the history
+    questionAnswer.insert(questionAnswerIndex,
+        userQuestion.toString() + '=' + userAnswer.toString());
+
+    questionAnswerIndex++;
   }
 }

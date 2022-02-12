@@ -7,11 +7,13 @@ import 'dropdown_menu.dart';
 import '../provider/theme_provider.dart';
 
 class TopButtons extends StatelessWidget {
+  List<String> calcHistory = [];
   final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
   final ThemeProvider themeProvider;
   TopButtons({
     Key? key,
     required this.themeProvider,
+    required this.calcHistory,
   }) : super(key: key);
 
   @override
@@ -33,6 +35,7 @@ class TopButtons extends StatelessWidget {
         ),
         const Expanded(child: SizedBox()),
         CustomDropdownMenu(
+          calcHistory: calcHistory,
           borderRadius: BorderRadius.circular(10),
           backgroundColor: Theme.of(context).hoverColor,
           icons: const [
