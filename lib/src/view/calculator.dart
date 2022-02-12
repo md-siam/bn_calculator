@@ -22,16 +22,16 @@ class _MyCalculatorState extends State<MyCalculator> {
   final List<String> buttons = [
     'C',
     '⌫',
-    '%',
+    '﹪',
     '÷',
     '৭',
     '৮',
     '৯',
-    'x',
+    '×',
     '৪',
     '৫',
     '৬',
-    '-',
+    '−',
     '১',
     '২',
     '৩',
@@ -151,12 +151,12 @@ class _MyCalculatorState extends State<MyCalculator> {
                       butttonTapped: () {
                         setState(() {
                           if (userQuestion != '' &&
-                              !userQuestion.startsWith('%') &&
+                              !userQuestion.startsWith('﹪') &&
                               !userQuestion.startsWith('÷') &&
-                              !userQuestion.startsWith('x') &&
+                              !userQuestion.startsWith('×') &&
                               !userQuestion.endsWith('÷') &&
-                              !userQuestion.endsWith('x') &&
-                              !userQuestion.endsWith('-') &&
+                              !userQuestion.endsWith('×') &&
+                              !userQuestion.endsWith('−') &&
                               !userQuestion.endsWith('+')) {
                             equalPresser();
                           }
@@ -199,9 +199,10 @@ class _MyCalculatorState extends State<MyCalculator> {
     finalQuestion = finalQuestion.replaceAll('৮', '8');
     finalQuestion = finalQuestion.replaceAll('৯', '9');
     finalQuestion = finalQuestion.replaceAll('০', '0');
-    // replacing x
+    // replacing ÷, ×, & − symbols
     finalQuestion = finalQuestion.replaceAll('÷', '/');
-    finalQuestion = finalQuestion.replaceAll('x', '*');
+    finalQuestion = finalQuestion.replaceAll('×', '*');
+    finalQuestion = finalQuestion.replaceAll('−', '-');
     // if start with + then, replacing + with empty string
     if (finalQuestion.startsWith('+')) {
       finalQuestion = finalQuestion.replaceAll('+', '');
@@ -213,8 +214,10 @@ class _MyCalculatorState extends State<MyCalculator> {
       Expression exp = p.parse(question);
       ContextModel cm = ContextModel();
       double eval = exp.evaluate(EvaluationType.REAL, cm);
-      var splitEval0 = eval.toString().split('.')[0]; // numbers before decimal point
-      var splitEval1 = eval.toString().split('.')[1]; // numbers after decimal point
+      var splitEval0 =
+          eval.toString().split('.')[0]; // numbers before decimal point
+      var splitEval1 =
+          eval.toString().split('.')[1]; // numbers after decimal point
 
       if (int.parse(splitEval1) == 0) {
         if ((int.parse(splitEval0)) ~/ 1000 != 0) {
@@ -233,12 +236,12 @@ class _MyCalculatorState extends State<MyCalculator> {
       }
     }
 
-    // if finalQuestion endswith '%' percentage sign
-    if (finalQuestion.endsWith('%')) {
+    // if finalQuestion endswith '﹪' percentage sign
+    if (finalQuestion.endsWith('﹪')) {
       if (finalQuestion.contains('-')) {
         var firstSplit = finalQuestion.toString().split('-')[0];
         var secondSplit =
-            finalQuestion.toString().split('-')[1].replaceAll('%', '');
+            finalQuestion.toString().split('-')[1].replaceAll('﹪', '');
         String modifiedQuestion =
             '$firstSplit-($firstSplit*($secondSplit/100))';
 
@@ -246,7 +249,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       } else if (finalQuestion.contains('+')) {
         var firstSplit = finalQuestion.toString().split('+')[0];
         var secondSplit =
-            finalQuestion.toString().split('+')[1].replaceAll('%', '');
+            finalQuestion.toString().split('+')[1].replaceAll('﹪', '');
         String modifiedQuestion =
             '$firstSplit+($firstSplit*($secondSplit/100))';
 
@@ -254,7 +257,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       } else if (finalQuestion.contains('*')) {
         var firstSplit = finalQuestion.toString().split('*')[0];
         var secondSplit =
-            finalQuestion.toString().split('*')[1].replaceAll('%', '');
+            finalQuestion.toString().split('*')[1].replaceAll('﹪', '');
         String modifiedQuestion =
             '$firstSplit*($firstSplit*($secondSplit/100))';
 
@@ -262,7 +265,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       } else if (finalQuestion.contains('/')) {
         var firstSplit = finalQuestion.toString().split('/')[0];
         var secondSplit =
-            finalQuestion.toString().split('/')[1].replaceAll('%', '');
+            finalQuestion.toString().split('/')[1].replaceAll('﹪', '');
         String modifiedQuestion =
             '$firstSplit/($firstSplit*($secondSplit/100))';
 
