@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:clay_containers/clay_containers.dart';
 
+import '../provider/history_provider.dart';
+
 class HistoryPage extends StatelessWidget {
-  List<String> calcHistory = [];
-  HistoryPage({Key? key, required this.calcHistory}) : super(key: key);
+  const HistoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (calcHistory.isNotEmpty) {
+    // calcHistoryCheck & calcHistory is getting data
+    // from the HistoryProvider
+    bool validityCheck =
+        !context.read<HistoryProvider>().questionAnswer.remove('');
+    List<String> calcHistory =
+        context.watch<HistoryProvider>().questionAnswer.reversed.toList();
+    if (validityCheck && calcHistory.isNotEmpty) {
       return Scaffold(
         appBar: AppBar(
           title: const Text('History'),

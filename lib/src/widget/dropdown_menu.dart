@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import '../view/history.dart';
 import 'util/arrow_clipper.dart';
-import '../provider/history_provider.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
   final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
@@ -180,19 +178,12 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
 void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
-      if (!context.read<HistoryProvider>().questionAnswer.remove('')) {
-        Navigator.of(context).push(
-          CupertinoPageRoute(
-            builder: (context) => HistoryPage(
-              calcHistory: context
-                  .watch<HistoryProvider>()
-                  .questionAnswer
-                  .reversed
-                  .toList(),
-            ),
-          ),
-        );
-      }
+      Navigator.of(context).push(
+        CupertinoPageRoute(
+          builder: (context) => const HistoryPage(),
+        ),
+      );
+
       break;
 
     case 1:
