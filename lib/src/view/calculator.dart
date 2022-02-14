@@ -1,10 +1,12 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:clay_containers/clay_containers.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 import '../widget/top_appbar.dart';
 import '../widget/button_widget.dart';
+import '../provider/history_provider.dart';
 
 class MyCalculator extends StatefulWidget {
   const MyCalculator({Key? key}) : super(key: key);
@@ -16,8 +18,8 @@ class MyCalculator extends StatefulWidget {
 class _MyCalculatorState extends State<MyCalculator> {
   var userQuestion = '';
   var userAnswer = '';
-  int questionAnswerIndex = 0;
-  final List<String> questionAnswer = <String>[''];
+  //int questionAnswerIndex = 0;
+  //final List<String> questionAnswer = <String>[''];
   final List<String> buttons = [
     'C',
     '⌫',
@@ -51,7 +53,7 @@ class _MyCalculatorState extends State<MyCalculator> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // top row buttons containing darkmode & info
-            TopButtons(calcHistory: questionAnswer),
+            TopButtons(),
             SizedBox(height: deviceHeight < 670 ? 0 : 10),
             Expanded(
               flex: deviceHeight < 670 ? 1 : 2,
@@ -286,10 +288,12 @@ class _MyCalculatorState extends State<MyCalculator> {
     finalAnswer = finalAnswer.replaceAll('0', '০');
     userAnswer = finalAnswer;
 
-    // inserting into the questionAnswer list for displaying it to the history
-    questionAnswer.insert(questionAnswerIndex,
-        userQuestion.toString() + '=' + userAnswer.toString());
-
-    questionAnswerIndex++;
+    // inserting into the questionAnswer list using provider
+    // for displaying it to the history.dart page
+    context.read<HistoryProvider>().questionAnswer.insert(
+          context.read<HistoryProvider>().questionAnswerIndex,
+          userQuestion.toString() + '=' + userAnswer.toString(),
+        );
+    context.read<HistoryProvider>().increment();
   }
 }

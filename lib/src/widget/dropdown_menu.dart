@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import '../view/history.dart';
 import 'util/arrow_clipper.dart';
+import '../provider/history_provider.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
   final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
@@ -11,13 +13,11 @@ class CustomDropdownMenu extends StatefulWidget {
   final BorderRadius? borderRadius;
   final Color backgroundColor;
   final ValueChanged<int>? onChange;
-  List<String> calcHistory = [];
   CustomDropdownMenu({
     Key? key,
     required this.icons,
     required this.borderRadius,
     required this.backgroundColor,
-    required this.calcHistory,
     this.onChange,
   }) : super(key: key);
 
@@ -153,7 +153,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
                         (index) {
                           return GestureDetector(
                             onTap: () {
-                              onSelected(context, index, widget.calcHistory);
+                              onSelected(context, index);
                               //widget.onChange!(index);
                               closeMenu();
                             },
@@ -177,14 +177,18 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
   }
 }
 
-void onSelected(BuildContext context, int item, List<String> _calcHistory) {
+void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
-      if (!_calcHistory.remove('')) {
+      if (!context.read<HistoryProvider>().questionAnswer.remove('')) {
         Navigator.of(context).push(
           CupertinoPageRoute(
             builder: (context) => HistoryPage(
-              calcHistory: _calcHistory.reversed.toList(),
+              calcHistory: context
+                  .watch<HistoryProvider>()
+                  .questionAnswer
+                  .reversed
+                  .toList(),
             ),
           ),
         );

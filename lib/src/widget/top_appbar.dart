@@ -7,12 +7,10 @@ import 'dropdown_menu.dart';
 import '../provider/theme_provider.dart';
 
 class TopButtons extends StatelessWidget {
-  List<String> calcHistory = [];
   final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
 
   TopButtons({
     Key? key,
-    required this.calcHistory,
   }) : super(key: key);
 
   @override
@@ -23,19 +21,18 @@ class TopButtons extends StatelessWidget {
         Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
           return DayNightSwitcherIcon(
             dayBackgroundColor: const Color(0xFF0C91D6),
-            isDarkModeEnabled: themeProvider.isDarkMode,
+            isDarkModeEnabled: themeProvider.darkTheme,
             onStateChanged: (value) async {
               await audioCache.play(
-                themeProvider.isDarkMode ? 'owl_light.wav' : 'owl_dark.wav',
+                themeProvider.darkTheme ? 'owl_light.wav' : 'owl_dark.wav',
                 mode: PlayerMode.LOW_LATENCY,
               );
-              themeProvider.toggleTheme(value);
+              themeProvider.toggleTheme();
             },
           );
         }),
         const Expanded(child: SizedBox()),
         CustomDropdownMenu(
-          calcHistory: calcHistory,
           borderRadius: BorderRadius.circular(10),
           backgroundColor: Theme.of(context).hoverColor,
           icons: const [

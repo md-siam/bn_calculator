@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'src/provider/theme_provider.dart';
+
 import 'src/view/calculator.dart';
+import 'src/provider/theme_provider.dart';
+import 'src/provider/history_provider.dart';
 
 void main() {
   // For disabling landscape view
@@ -10,7 +12,20 @@ void main() {
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
-  runApp(const MyApp());
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => HistoryProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,23 +33,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => ThemeProvider(),
-        ),
-      ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: MyTheme.lightTheme,
-            darkTheme: MyTheme.darkTheme,
-            themeMode: themeProvider.themeMode,
-            home: const MyCalculator(),
-          );
-        },
-      ),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme:
+              themeProvider.darkTheme ? MyTheme.darkTheme : MyTheme.lightTheme,
+          home: const MyCalculator(),
+        );
+      },
     );
   }
 }
