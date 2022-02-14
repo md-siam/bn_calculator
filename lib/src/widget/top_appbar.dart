@@ -18,19 +18,21 @@ class TopButtons extends StatelessWidget {
     return Row(
       children: [
         const SizedBox(width: 10),
-        Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
-          return DayNightSwitcherIcon(
-            dayBackgroundColor: const Color(0xFF0C91D6),
-            isDarkModeEnabled: themeProvider.darkTheme,
-            onStateChanged: (value) async {
-              await audioCache.play(
-                themeProvider.darkTheme ? 'owl_light.wav' : 'owl_dark.wav',
-                mode: PlayerMode.LOW_LATENCY,
-              );
-              themeProvider.toggleTheme();
-            },
-          );
-        }),
+        Consumer<ThemeProvider>(
+          builder: (context, themeProvider, child) {
+            return DayNightSwitcherIcon(
+              dayBackgroundColor: const Color(0xFF0C91D6),
+              isDarkModeEnabled: themeProvider.darkTheme,
+              onStateChanged: (value) async {
+                await audioCache.play(
+                  themeProvider.darkTheme ? 'owl_light.wav' : 'owl_dark.wav',
+                  mode: PlayerMode.LOW_LATENCY,
+                );
+                themeProvider.toggleTheme();
+              },
+            );
+          },
+        ),
         const Expanded(child: SizedBox()),
         CustomDropdownMenu(
           borderRadius: BorderRadius.circular(10),

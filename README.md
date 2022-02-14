@@ -32,8 +32,8 @@ Note: It's an open-source project; hence anyone can use this code according to t
     <th>Dark Mode</th>
   </tr>
   <tr>
-    <td><img align="right" src="screenshots/lightMode.gif" height="500"></img></td>
-    <td><img align="right" src="screenshots/darkMode.gif" height="500"></img></td>
+    <td><img align="right" src="screenshots/lightTheme.gif" height="500"></img></td>
+    <td><img align="right" src="screenshots/darkTheme.gif" height="500"></img></td>
   </tr>
   </table>
 
