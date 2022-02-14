@@ -17,10 +17,15 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-        create: (context) => ThemeProvider(),
-        builder: (context, _) {
-          final themeProvider = Provider.of<ThemeProvider>(context);
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(),
+        ),
+      ],
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: MyTheme.lightTheme,
@@ -29,5 +34,7 @@ class MyApp extends StatelessWidget {
             home: const MyCalculator(),
           );
         },
-      );
+      ),
+    );
+  }
 }

@@ -1,12 +1,10 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:clay_containers/clay_containers.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 import '../widget/top_appbar.dart';
 import '../widget/button_widget.dart';
-import '../provider/theme_provider.dart';
 
 class MyCalculator extends StatefulWidget {
   const MyCalculator({Key? key}) : super(key: key);
@@ -45,7 +43,6 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -54,10 +51,7 @@ class _MyCalculatorState extends State<MyCalculator> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // top row buttons containing darkmode & info
-            TopButtons(
-              themeProvider: themeProvider,
-              calcHistory: questionAnswer,
-            ),
+            TopButtons(calcHistory: questionAnswer),
             SizedBox(height: deviceHeight < 670 ? 0 : 10),
             Expanded(
               flex: deviceHeight < 670 ? 1 : 2,
