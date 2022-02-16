@@ -5,12 +5,13 @@ import '../provider/sound_provider.dart';
 
 class MyButton extends StatefulWidget {
   final String buttonText;
-  final butttonTapped;
+  // ignore: prefer_typing_uninitialized_variables
+  final buttonTapped;
 
   const MyButton({
     Key? key,
     required this.buttonText,
-    this.butttonTapped,
+    this.buttonTapped,
   }) : super(key: key);
 
   @override
@@ -38,7 +39,7 @@ class _MyButtonState extends State<MyButton> {
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: widget.butttonTapped,
+      onTap: widget.buttonTapped,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Listener(

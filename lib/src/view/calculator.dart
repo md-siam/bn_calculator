@@ -52,8 +52,8 @@ class _MyCalculatorState extends State<MyCalculator> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // top row buttons containing darkmode & info
-            TopButtons(),
+            // top row buttons containing dark mode & info
+            const TopButtons(),
             SizedBox(height: deviceHeight < 670 ? 0 : 10),
             Expanded(
               flex: deviceHeight < 670 ? 1 : 2,
@@ -122,7 +122,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   // Clear Button
                   if (index == 0) {
                     return MyButton(
-                      butttonTapped: () {
+                      buttonTapped: () {
                         setState(() {
                           userQuestion = '';
                           userAnswer = '';
@@ -134,7 +134,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   // Delete Button
                   else if (index == 1) {
                     return MyButton(
-                      butttonTapped: () {
+                      buttonTapped: () {
                         setState(() {
                           if (userQuestion != '') {
                             userQuestion = userQuestion.substring(
@@ -148,7 +148,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   // Equal Button
                   else if (index == buttons.length - 1) {
                     return MyButton(
-                      butttonTapped: () {
+                      buttonTapped: () {
                         setState(() {
                           if (userQuestion != '' &&
                               !userQuestion.startsWith('﹪') &&
@@ -168,7 +168,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   // Rest of the buttons
                   else {
                     return MyButton(
-                      butttonTapped: () {
+                      buttonTapped: () {
                         setState(() {
                           userQuestion += buttons[index];
                         });
@@ -188,7 +188,7 @@ class _MyCalculatorState extends State<MyCalculator> {
   void equalPresser() {
     String finalQuestion = userQuestion;
     String finalAnswer = '';
-    // convertion from bn to en
+    // conversion from bn to en
     finalQuestion = finalQuestion.replaceAll('১', '1');
     finalQuestion = finalQuestion.replaceAll('২', '2');
     finalQuestion = finalQuestion.replaceAll('৩', '3');
@@ -236,7 +236,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       }
     }
 
-    // if finalQuestion endswith '﹪' percentage sign
+    // if finalQuestion ends with '﹪' percentage sign
     if (finalQuestion.endsWith('﹪')) {
       if (finalQuestion.contains('-')) {
         var firstSplit = finalQuestion.toString().split('-')[0];
@@ -275,7 +275,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       _parsingQuestionForCalc(finalQuestion);
     }
 
-    // convertion from en to bn
+    // conversion from en to bn
     finalAnswer = finalAnswer.replaceAll('1', '১');
     finalAnswer = finalAnswer.replaceAll('2', '২');
     finalAnswer = finalAnswer.replaceAll('3', '৩');
