@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'src/view/calculator.dart';
 import 'src/provider/theme_provider.dart';
+import 'src/provider/sound_provider.dart';
 import 'src/provider/history_provider.dart';
 
 void main() {
@@ -18,6 +19,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SoundProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => HistoryProvider(),

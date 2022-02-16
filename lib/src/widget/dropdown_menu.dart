@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 import '../view/history.dart';
 import 'util/arrow_clipper.dart';
+import '../provider/sound_provider.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
-  final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
   final List<Icon> icons;
   final BorderRadius? borderRadius;
   final Color backgroundColor;
   final ValueChanged<int>? onChange;
-  CustomDropdownMenu({
+  const CustomDropdownMenu({
     Key? key,
     required this.icons,
     required this.borderRadius,
@@ -75,28 +75,27 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu>
     return Container(
       key: _key,
       decoration: BoxDecoration(borderRadius: _borderRadius),
-      // burger menu icon property
-      child: IconButton(
-        splashRadius: 1,
-        icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_close,
-          progress: _animationController,
-        ),
-        iconSize: 35,
-        onPressed: () async {
-          if (isMenuOpen) {
-            await widget.audioCache.play(
-              'dropdown_close.wav',
-              mode: PlayerMode.LOW_LATENCY,
-            );
-            closeMenu();
-          } else {
-            await widget.audioCache.play(
-              'dropdown_open.wav',
-              mode: PlayerMode.LOW_LATENCY,
-            );
-            openMenu();
-          }
+      // Consumer provides playMenuClose() & playMenuOpen()
+      // from SoundProvider
+      child: Consumer<SoundProvider>(
+        builder: (context, soundProvider, child) {
+          return IconButton(
+            splashRadius: 1,
+            icon: AnimatedIcon(
+              icon: AnimatedIcons.menu_close,
+              progress: _animationController,
+            ),
+            iconSize: 35,
+            onPressed: () {
+              if (isMenuOpen) {
+                soundProvider.playMenuClose();
+                closeMenu();
+              } else {
+                soundProvider.playMenuOpen();
+                openMenu();
+              }
+            },
+          );
         },
       ),
     );

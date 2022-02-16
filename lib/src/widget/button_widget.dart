@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/sound_provider.dart';
 
 class MyButton extends StatefulWidget {
   final String buttonText;
-  // ignore: prefer_typing_uninitialized_variables
   final butttonTapped;
 
   const MyButton({
@@ -18,13 +19,10 @@ class MyButton extends StatefulWidget {
 
 class _MyButtonState extends State<MyButton> {
   bool _isElevated = true;
-  AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
 
-  void _pressedDown(PointerEvent details) async {
-    await audioCache.play(
-      'button_press_2.wav',
-      mode: PlayerMode.LOW_LATENCY,
-    );
+  void _pressedDown(PointerEvent details) {
+    // provides playButtonSound() from SoundProvider
+    context.read<SoundProvider>().playButtonSound();
     setState(() {
       _isElevated = !_isElevated;
     });

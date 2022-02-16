@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 
 import 'dropdown_menu.dart';
 import '../provider/theme_provider.dart';
+import '../provider/sound_provider.dart';
 
 class TopButtons extends StatelessWidget {
-  final AudioCache audioCache = AudioCache(prefix: 'assets/audio/');
-
-  TopButtons({
+  const TopButtons({
     Key? key,
   }) : super(key: key);
 
@@ -20,15 +18,18 @@ class TopButtons extends StatelessWidget {
         const SizedBox(width: 10),
         Consumer<ThemeProvider>(
           builder: (context, themeProvider, child) {
-            return DayNightSwitcherIcon(
-              dayBackgroundColor: const Color(0xFF0C91D6),
-              isDarkModeEnabled: themeProvider.darkTheme,
-              onStateChanged: (value) async {
-                await audioCache.play(
-                  themeProvider.darkTheme ? 'owl_light.wav' : 'owl_dark.wav',
-                  mode: PlayerMode.LOW_LATENCY,
+            return Consumer<SoundProvider>(
+              builder: (context, soundProvider, child) {
+                return DayNightSwitcherIcon(
+                  dayBackgroundColor: const Color(0xFF0C91D6),
+                  isDarkModeEnabled: themeProvider.darkTheme,
+                  onStateChanged: (value) {
+                    themeProvider.darkTheme
+                        ? soundProvider.playLightSound()
+                        : soundProvider.playDarkSound();
+                    themeProvider.toggleTheme();
+                  },
                 );
-                themeProvider.toggleTheme();
               },
             );
           },
