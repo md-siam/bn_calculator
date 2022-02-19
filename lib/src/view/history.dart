@@ -15,37 +15,32 @@ class HistoryPage extends StatelessWidget {
         !context.read<HistoryProvider>().questionAnswer.remove('');
     List<String> calcHistory =
         context.watch<HistoryProvider>().questionAnswer.reversed.toList();
-    if (validityCheck && calcHistory.isNotEmpty) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('History'),
-        ),
-        body: ListView.builder(
-          itemCount: (calcHistory.length),
-          itemBuilder: (BuildContext context, int index) {
-            return MyNeumorphicCard(
-              splitHistory: calcHistory[index],
-            );
-          },
-        ),
-      );
-    } else {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('History'),
-        ),
-        body: const Center(
-          child: Icon(
-            Icons.history,
-            color: Colors.black26,
-            size: 200,
-          ),
-        ),
-      );
-    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('History'),
+      ),
+      body: (validityCheck && calcHistory.isNotEmpty)
+          ? ListView.builder(
+              itemCount: (calcHistory.length),
+              itemBuilder: (BuildContext context, int index) {
+                return MyNeumorphicCard(
+                  splitHistory: calcHistory[index],
+                );
+              },
+            )
+          : const Center(
+              child: Icon(
+                Icons.history,
+                color: Colors.black26,
+                size: 200,
+              ),
+            ),
+    );
   }
 }
 
+// Custom Neumorphic card ui
 class MyNeumorphicCard extends StatelessWidget {
   final String splitHistory;
 
