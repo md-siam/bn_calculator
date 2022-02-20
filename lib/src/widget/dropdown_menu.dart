@@ -193,15 +193,12 @@ void onSelected(BuildContext context, int item) {
           size: 80,
         ),
         applicationName: 'BN Calculator',
-        applicationVersion: '0.2.1',
+        applicationVersion: '1.0.0',
         applicationLegalese: '©2022, mdsiam.xyz',
         children: const [
-          Padding(
-            padding: EdgeInsets.only(top: 1.0),
-            child: Text(
-              'This app is designed with a custom neumorphic button, with a custom button press sound, that imitates the sound of a physical calculator. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar.',
-              textAlign: TextAlign.justify,
-            ),
+          Text(
+            'I dedicate this app to all the freedom fighters who have died for the Bengali language, and I quote in Bengali -\n "আমরা তোমাদের ভুলব না।"\n For bug founder: Please send me an email mentioning the problem, and your device model.\nEmail: md.siam03@gmail.com',
+            textAlign: TextAlign.center,
           ),
         ],
       );
