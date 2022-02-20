@@ -197,8 +197,8 @@ void onSelected(BuildContext context, int item) {
         applicationLegalese: '©2022, mdsiam.xyz',
         children: const [
           Text(
-            'I dedicate this app to all the freedom fighters who have died for the Bengali language, and I quote in Bengali -\n "আমরা তোমাদের ভুলব না।"\n For bug founder: Please send me an email mentioning the problem, and your device model.\nEmail: md.siam03@gmail.com',
-            textAlign: TextAlign.center,
+            '     I dedicate this app to all the freedom fighters who have died for the Bengali language, and I quote in Bengali - "আমরা তোমাদের ভুলব না।"\n     For bug founder: Please send me an email mentioning the problem, and your device model.\nEmail: md.siam03@gmail.com',
+            textAlign: TextAlign.justify,
           ),
         ],
       );
