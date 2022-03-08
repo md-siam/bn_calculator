@@ -1,0 +1,16 @@
+lib
+├── app
+│   ├── provider
+│   │   ├── history_provider.dart
+│   │   ├── sound_provider.dart
+│   │   └── theme_provider.dart
+│   ├── view
+│   │   ├── calculator.dart
+│   │   └── history.dart
+│   └── widget
+│       ├── util
+│       │   └── arrow_clipper.dart
+│       ├── button_widget.dart
+│       ├── dropdown_menu.dart
+│       └── top_appbar.dart
+└── main.dart

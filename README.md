@@ -24,6 +24,27 @@ Note: It's an open-source project; hence anyone can use this code according to t
 
    \*\*Thanks to those developers for their awesome packages.\*\*
 
+## Directory
+
+```
+lib
+├── app
+│   ├── provider
+│   │   ├── history_provider.dart
+│   │   ├── sound_provider.dart
+│   │   └── theme_provider.dart
+│   ├── view
+│   │   ├── calculator.dart
+│   │   └── history.dart
+│   └── widget
+│       ├── util
+│       │   └── arrow_clipper.dart
+│       ├── button_widget.dart
+│       ├── dropdown_menu.dart
+│       └── top_appbar.dart
+└── main.dart
+```
+
 ## Screenshots
 
 <table align="center" style="margin: 0px auto;">
