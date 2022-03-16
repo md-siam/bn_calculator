@@ -1,11 +1,18 @@
+// Copyright (c) 2022, Md. Siam
+// http://mdsiam.xyz/
+//
+// Use of this source code is governed by an MIT-style
+// license that can be found in the LICENSE file or at
+// https://choosealicense.com/licenses/mit/
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'src/view/calculator.dart';
-import 'src/provider/theme_provider.dart';
-import 'src/provider/sound_provider.dart';
-import 'src/provider/history_provider.dart';
+import 'app/view/calculator.dart';
+import 'app/provider/theme_provider.dart';
+import 'app/provider/sound_provider.dart';
+import 'app/provider/history_provider.dart';
 
 void main() {
   // For disabling landscape view

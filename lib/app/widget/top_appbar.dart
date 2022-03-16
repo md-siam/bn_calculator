@@ -1,3 +1,10 @@
+// Copyright (c) 2022, Md. Siam
+// http://mdsiam.xyz/
+//
+// Use of this source code is governed by an MIT-style
+// license that can be found in the LICENSE file or at
+// https://choosealicense.com/licenses/mit/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
