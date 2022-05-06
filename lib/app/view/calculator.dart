@@ -45,6 +45,7 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   @override
   Widget build(BuildContext context) {
+    double devicewidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -55,130 +56,133 @@ class _MyCalculatorState extends State<MyCalculator> {
             // top row buttons containing dark mode & info
             const TopButtons(),
             SizedBox(height: deviceHeight < 670 ? 0 : 10),
-            Expanded(
-              flex: deviceHeight < 670 ? 1 : 2,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 15.0,
-                  right: 12.0,
-                  bottom: 5.0,
-                ),
-                child: ClayContainer(
-                  emboss: true,
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: 20.0,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: FittedBox(
-                            child: Container(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: Text(
-                                userQuestion,
-                                style: const TextStyle(
-                                  //fontSize: deviceHeight < 670 ? 24 : 34,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 15.0,
+                      right: 12.0,
+                      bottom: 5.0,
+                    ),
+                    child: ClayContainer(
+                      height: 115,
+                      emboss: true,
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: 20.0,
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: FittedBox(
+                              child: Container(
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: Text(
+                                  userQuestion,
+                                  style: const TextStyle(
+                                    //fontSize: deviceHeight < 670 ? 24 : 35,
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: FittedBox(
-                            child: Container(
-                              padding: const EdgeInsets.only(right: 20.0),
-                              child: Text(
-                                userAnswer,
-                                style: const TextStyle(
-                                  //fontSize: deviceHeight < 670 ? 24 : 50,
-                                  fontSize: 60,
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: FittedBox(
+                              child: Container(
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: Text(
+                                  userAnswer,
+                                  style: const TextStyle(
+                                    //fontSize: deviceHeight < 670 ? 24 : 50,
+                                    fontSize: 40,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: devicewidth,
+                    height: deviceHeight - 200,
+                    child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                      ),
+                      itemCount: buttons.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        // Clear Button
+                        if (index == 0) {
+                          return MyButton(
+                            buttonTapped: () {
+                              setState(() {
+                                userQuestion = '';
+                                userAnswer = '';
+                              });
+                            },
+                            buttonText: buttons[index],
+                          );
+                        }
+                        // Delete Button
+                        else if (index == 1) {
+                          return MyButton(
+                            buttonTapped: () {
+                              setState(() {
+                                if (userQuestion != '') {
+                                  userQuestion = userQuestion.substring(
+                                      0, userQuestion.length - 1);
+                                }
+                              });
+                            },
+                            buttonText: buttons[index],
+                          );
+                        }
+                        // Equal Button
+                        else if (index == buttons.length - 1) {
+                          return MyButton(
+                            buttonTapped: () {
+                              setState(() {
+                                if (userQuestion != '' &&
+                                    !userQuestion.startsWith('﹪') &&
+                                    !userQuestion.startsWith('÷') &&
+                                    !userQuestion.startsWith('×') &&
+                                    !userQuestion.endsWith('÷') &&
+                                    !userQuestion.endsWith('×') &&
+                                    !userQuestion.endsWith('−') &&
+                                    !userQuestion.endsWith('+')) {
+                                  equalPresser();
+                                }
+                              });
+                            },
+                            buttonText: buttons[index],
+                          );
+                        }
+                        // Rest of the buttons
+                        else {
+                          return MyButton(
+                            buttonTapped: () {
+                              setState(() {
+                                userQuestion += buttons[index];
+                              });
+                            },
+                            buttonText: buttons[index],
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-            //SizedBox(height: deviceHeight < 670 ? 0 : 30),
-            Expanded(
-              flex: deviceHeight < 670 ? 4 : 6,
-              child: GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                ),
-                itemCount: buttons.length,
-                itemBuilder: (BuildContext context, int index) {
-                  // Clear Button
-                  if (index == 0) {
-                    return MyButton(
-                      buttonTapped: () {
-                        setState(() {
-                          userQuestion = '';
-                          userAnswer = '';
-                        });
-                      },
-                      buttonText: buttons[index],
-                    );
-                  }
-                  // Delete Button
-                  else if (index == 1) {
-                    return MyButton(
-                      buttonTapped: () {
-                        setState(() {
-                          if (userQuestion != '') {
-                            userQuestion = userQuestion.substring(
-                                0, userQuestion.length - 1);
-                          }
-                        });
-                      },
-                      buttonText: buttons[index],
-                    );
-                  }
-                  // Equal Button
-                  else if (index == buttons.length - 1) {
-                    return MyButton(
-                      buttonTapped: () {
-                        setState(() {
-                          if (userQuestion != '' &&
-                              !userQuestion.startsWith('﹪') &&
-                              !userQuestion.startsWith('÷') &&
-                              !userQuestion.startsWith('×') &&
-                              !userQuestion.endsWith('÷') &&
-                              !userQuestion.endsWith('×') &&
-                              !userQuestion.endsWith('−') &&
-                              !userQuestion.endsWith('+')) {
-                            equalPresser();
-                          }
-                        });
-                      },
-                      buttonText: buttons[index],
-                    );
-                  }
-                  // Rest of the buttons
-                  else {
-                    return MyButton(
-                      buttonTapped: () {
-                        setState(() {
-                          userQuestion += buttons[index];
-                        });
-                      },
-                      buttonText: buttons[index],
-                    );
-                  }
-                },
-              ),
-            ),
+
+            const Expanded(child: SizedBox()),
           ],
         ),
       ),
