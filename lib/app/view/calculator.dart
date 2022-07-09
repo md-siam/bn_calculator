@@ -19,8 +19,8 @@ class MyCalculator extends StatefulWidget {
 }
 
 class _MyCalculatorState extends State<MyCalculator> {
-  var _userQuestion = '';
-  var _userAnswer = '';
+  String _userQuestion = '';
+  String _userAnswer = '';
   //int questionAnswerIndex = 0;
   //final List<String> questionAnswer = <String>[''];
 
@@ -125,20 +125,31 @@ class _MyCalculatorState extends State<MyCalculator> {
                   // Equal Button
                   else if (index == button.length - 1) {
                     return MyButton(
-                      buttonTapped: () {
-                        setState(() {
-                          if (_userQuestion != '' &&
-                              !_userQuestion.startsWith('﹪') &&
-                              !_userQuestion.startsWith('÷') &&
-                              !_userQuestion.startsWith('×') &&
-                              !_userQuestion.endsWith('÷') &&
-                              !_userQuestion.endsWith('×') &&
-                              !_userQuestion.endsWith('−') &&
-                              !_userQuestion.endsWith('+')) {
-                            equalPresser();
-                          }
-                        });
-                      },
+                      buttonTapped: () => setState(() {
+                        if (_userQuestion != '' &&
+                            !_userQuestion.startsWith('﹪') &&
+                            !_userQuestion.startsWith('÷') &&
+                            !_userQuestion.startsWith('×') &&
+                            !_userQuestion.endsWith('÷') &&
+                            !_userQuestion.endsWith('×') &&
+                            !_userQuestion.endsWith('−') &&
+                            !_userQuestion.endsWith('+')) {
+                          equalPresser();
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: const Text('Invalid input string..'),
+                              action: SnackBarAction(
+                                label: 'Close',
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                },
+                              ),
+                            ),
+                          );
+                        }
+                      }),
                       buttonText: button[index],
                     );
                   }

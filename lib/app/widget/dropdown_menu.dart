@@ -188,17 +188,14 @@ void onSelected(BuildContext context, int item) {
     case 1:
       showAboutDialog(
         context: context,
-        applicationIcon: const Icon(
-          Icons.calculate_outlined,
-          size: 80,
-        ),
+        applicationIcon: const Icon(Icons.calculate_outlined, size: 80),
         applicationName: 'BN Calculator',
         applicationVersion: '1.0.0',
         applicationLegalese: '©2022, mdsiam.xyz',
         children: const [
           Text(
-            '   This Bengali Numeric (BN) Calculator is design with a custom neomorphic button class, with a custom button press sound; that imitates the sound of a physical calculator. In addition to that, this calculator has a beautiful dark theme, and a user can turn On/Off the dark theme, using a custom animated button.',
-            textAlign: TextAlign.justify,
+            '\nThank you for downloading this Bengali Numeric (BN) Calculator. License information are available below.',
+            textAlign: TextAlign.center,
           ),
         ],
       );
