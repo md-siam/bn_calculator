@@ -12,10 +12,10 @@
     Bengali Numeric Calculator, in short, BN Calculator is designed with a custom <a href="lib/src/widget/button_widget.dart">neumorphic button</a> class, with a custom button press sound, that imitates the sound of a physical calculator. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar.
 </p>
 
-Note: It's an open-source project; hence anyone can use this code according to the [MIT License](https://choosealicense.com/licenses/mit/) rules & regulations.
+**Note: It's an open-source project; hence anyone can use this code according to the [MIT License](https://choosealicense.com/licenses/mit/) rules & regulations.
 
 <p align="justify">
-  In addition, it is using some other third-party packages from the open-source community. Thanks to those open-source developers for their amazing packages. Those packages are: 
+  In addition, this calculator is using some other third-party packages from the open-source community. Thanks to those open-source developers for their amazing packages, and those packages are: 
 </p>
 
 ```
@@ -52,7 +52,7 @@ Note: It's an open-source project; hence anyone can use this code according to t
   </tr>
   </table>
 
-## File Pattern Inside The lib Folder
+## File Pattern Inside The `lib` Folder
 
 ```
 lib/
