@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/cupertino.dart';
 
+import '../provider/sound_provider.dart';
 import '../view/history.dart';
 import 'util/arrow_clipper.dart';
-import '../provider/sound_provider.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
   final List<Icon> icons;
@@ -197,7 +197,7 @@ void onSelected(BuildContext context, int item) {
         applicationLegalese: '©2022, mdsiam.xyz',
         children: const [
           Text(
-            '     I dedicate this app to all the freedom fighters who have died for the Bengali language, and I quote in Bengali - "আমরা তোমাদের ভুলব না।"\n     For bug founder: Please send me an email mentioning the problem, and your device model.\nEmail: md.siam03@gmail.com',
+            '   This Bengali Numeric (BN) Calculator is design with a custom neomorphic button class, with a custom button press sound; that imitates the sound of a physical calculator. In addition to that, this calculator has a beautiful dark theme, and a user can turn On/Off the dark theme, using a custom animated button.',
             textAlign: TextAlign.justify,
           ),
         ],

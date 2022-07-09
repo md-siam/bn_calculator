@@ -1,6 +1,6 @@
+import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:clay_containers/clay_containers.dart';
 
 import '../provider/history_provider.dart';
 

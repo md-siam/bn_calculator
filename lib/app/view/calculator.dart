@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:clay_containers/clay_containers.dart';
 import 'package:math_expressions/math_expressions.dart';
 
+import '../static/button.dart';
 import '../widget/top_appbar.dart';
 import '../widget/button_widget.dart';
 import '../provider/history_provider.dart';
@@ -16,173 +19,143 @@ class MyCalculator extends StatefulWidget {
 }
 
 class _MyCalculatorState extends State<MyCalculator> {
-  var userQuestion = '';
-  var userAnswer = '';
+  var _userQuestion = '';
+  var _userAnswer = '';
   //int questionAnswerIndex = 0;
   //final List<String> questionAnswer = <String>[''];
-  final List<String> buttons = [
-    'C',
-    '⌫',
-    '﹪',
-    '÷',
-    '৭',
-    '৮',
-    '৯',
-    '×',
-    '৪',
-    '৫',
-    '৬',
-    '−',
-    '১',
-    '২',
-    '৩',
-    '+',
-    '০',
-    '.',
-    '০০০',
-    '=',
-  ];
 
   @override
   Widget build(BuildContext context) {
-    double devicewidth = MediaQuery.of(context).size.width;
-    double deviceHeight = MediaQuery.of(context).size.height;
+    double _deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // top row buttons containing dark mode & info
             const TopButtons(),
-            SizedBox(height: deviceHeight < 670 ? 0 : 10),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 15.0,
-                      right: 12.0,
-                      bottom: 5.0,
-                    ),
-                    child: ClayContainer(
-                      height: 115,
-                      emboss: true,
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: 20.0,
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: FittedBox(
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: Text(
-                                  userQuestion,
-                                  style: const TextStyle(
-                                    //fontSize: deviceHeight < 670 ? 24 : 35,
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+            SizedBox(height: _deviceHeight < 670 ? 0 : 10),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 15.0,
+                  right: 12.0,
+                  bottom: 5.0,
+                ),
+                child: ClayContainer(
+                  height: 115,
+                  emboss: true,
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: 20.0,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: FittedBox(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                            ),
+                            child: Text(
+                              _userQuestion,
+                              style: TextStyle(
+                                fontSize: _deviceHeight < 670 ? 34 : 45,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: FittedBox(
-                              child: Container(
-                                padding: const EdgeInsets.only(right: 20.0),
-                                child: Text(
-                                  userAnswer,
-                                  style: const TextStyle(
-                                    //fontSize: deviceHeight < 670 ? 24 : 50,
-                                    fontSize: 40,
-                                  ),
-                                ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: FittedBox(
+                          child: Container(
+                            padding: const EdgeInsets.only(right: 20.0),
+                            child: Text(
+                              _userAnswer,
+                              style: TextStyle(
+                                fontSize: _deviceHeight < 670 ? 40 : 45,
+                                //fontSize: 40,
                               ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  SizedBox(
-                    width: devicewidth,
-                    height: deviceHeight - 200,
-                    child: GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                      ),
-                      itemCount: buttons.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        // Clear Button
-                        if (index == 0) {
-                          return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                userQuestion = '';
-                                userAnswer = '';
-                              });
-                            },
-                            buttonText: buttons[index],
-                          );
-                        }
-                        // Delete Button
-                        else if (index == 1) {
-                          return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                if (userQuestion != '') {
-                                  userQuestion = userQuestion.substring(
-                                      0, userQuestion.length - 1);
-                                }
-                              });
-                            },
-                            buttonText: buttons[index],
-                          );
-                        }
-                        // Equal Button
-                        else if (index == buttons.length - 1) {
-                          return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                if (userQuestion != '' &&
-                                    !userQuestion.startsWith('﹪') &&
-                                    !userQuestion.startsWith('÷') &&
-                                    !userQuestion.startsWith('×') &&
-                                    !userQuestion.endsWith('÷') &&
-                                    !userQuestion.endsWith('×') &&
-                                    !userQuestion.endsWith('−') &&
-                                    !userQuestion.endsWith('+')) {
-                                  equalPresser();
-                                }
-                              });
-                            },
-                            buttonText: buttons[index],
-                          );
-                        }
-                        // Rest of the buttons
-                        else {
-                          return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                userQuestion += buttons[index];
-                              });
-                            },
-                            buttonText: buttons[index],
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-
-            const Expanded(child: SizedBox()),
+            SizedBox(height: _deviceHeight < 670 ? 0 : 10),
+            Expanded(
+              flex: 4,
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                ),
+                itemCount: button.length,
+                itemBuilder: (BuildContext context, int index) {
+                  // Clear Button
+                  if (index == 0) {
+                    return MyButton(
+                      buttonTapped: () {
+                        setState(() {
+                          _userQuestion = '';
+                          _userAnswer = '';
+                        });
+                      },
+                      buttonText: button[index],
+                    );
+                  }
+                  // Delete Button
+                  else if (index == 1) {
+                    return MyButton(
+                      buttonTapped: () {
+                        setState(() {
+                          if (_userQuestion != '') {
+                            _userQuestion = _userQuestion.substring(
+                                0, _userQuestion.length - 1);
+                          }
+                        });
+                      },
+                      buttonText: button[index],
+                    );
+                  }
+                  // Equal Button
+                  else if (index == button.length - 1) {
+                    return MyButton(
+                      buttonTapped: () {
+                        setState(() {
+                          if (_userQuestion != '' &&
+                              !_userQuestion.startsWith('﹪') &&
+                              !_userQuestion.startsWith('÷') &&
+                              !_userQuestion.startsWith('×') &&
+                              !_userQuestion.endsWith('÷') &&
+                              !_userQuestion.endsWith('×') &&
+                              !_userQuestion.endsWith('−') &&
+                              !_userQuestion.endsWith('+')) {
+                            equalPresser();
+                          }
+                        });
+                      },
+                      buttonText: button[index],
+                    );
+                  }
+                  // Rest of the buttons
+                  else {
+                    return MyButton(
+                      buttonTapped: () {
+                        setState(() {
+                          _userQuestion += button[index];
+                        });
+                      },
+                      buttonText: button[index],
+                    );
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -190,9 +163,9 @@ class _MyCalculatorState extends State<MyCalculator> {
   }
 
   void equalPresser() {
-    String finalQuestion = userQuestion;
+    String finalQuestion = _userQuestion;
     String finalAnswer = '';
-    // conversion from bn to en
+    // conversion from bn numeric -to-> en numeric
     finalQuestion = finalQuestion.replaceAll('১', '1');
     finalQuestion = finalQuestion.replaceAll('২', '2');
     finalQuestion = finalQuestion.replaceAll('৩', '3');
@@ -212,31 +185,48 @@ class _MyCalculatorState extends State<MyCalculator> {
       finalQuestion = finalQuestion.replaceAll('+', '');
     }
 
-    // this is the method for calculations
+    /// this is the [main method] for all types of calculations
+    ///
     _parsingQuestionForCalc(question) {
-      Parser p = Parser();
-      Expression exp = p.parse(question);
-      ContextModel cm = ContextModel();
-      double eval = exp.evaluate(EvaluationType.REAL, cm);
-      var splitEval0 =
-          eval.toString().split('.')[0]; // numbers before decimal point
-      var splitEval1 =
-          eval.toString().split('.')[1]; // numbers after decimal point
+      try {
+        Parser p = Parser();
+        Expression exp = p.parse(question);
+        ContextModel cm = ContextModel();
+        double eval = exp.evaluate(EvaluationType.REAL, cm);
 
-      if (int.parse(splitEval1) == 0) {
-        if ((int.parse(splitEval0)) ~/ 1000 != 0) {
-          var intlFormatter = NumberFormat('#,##,000');
-          finalAnswer = intlFormatter.format(eval.round()).toString();
+        var splitEval0 =
+            eval.toString().split('.')[0]; // numbers before decimal point
+        var splitEval1 =
+            eval.toString().split('.')[1]; // numbers after decimal point
+
+        if (int.parse(splitEval1) == 0) {
+          if ((int.parse(splitEval0)) ~/ 1000 != 0) {
+            var intlFormatter = NumberFormat('#,##,000');
+            finalAnswer = intlFormatter.format(eval.round()).toString();
+          } else {
+            finalAnswer = eval.round().toString();
+          }
         } else {
-          finalAnswer = eval.round().toString();
+          if ((int.parse(splitEval0)) ~/ 1000 != 0) {
+            var intlFormatter = NumberFormat('#,##,000.00');
+            finalAnswer = intlFormatter.format(eval);
+          } else {
+            finalAnswer = eval.toStringAsFixed(2);
+          }
         }
-      } else {
-        if ((int.parse(splitEval0)) ~/ 1000 != 0) {
-          var intlFormatter = NumberFormat('#,##,000.00');
-          finalAnswer = intlFormatter.format(eval);
-        } else {
-          finalAnswer = eval.toStringAsFixed(2);
-        }
+      } catch (e) {
+        log('$e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('$e'),
+            action: SnackBarAction(
+              label: 'Close',
+              onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              },
+            ),
+          ),
+        );
       }
     }
 
@@ -290,13 +280,13 @@ class _MyCalculatorState extends State<MyCalculator> {
     finalAnswer = finalAnswer.replaceAll('8', '৮');
     finalAnswer = finalAnswer.replaceAll('9', '৯');
     finalAnswer = finalAnswer.replaceAll('0', '০');
-    userAnswer = finalAnswer;
+    _userAnswer = finalAnswer;
 
     // inserting into the questionAnswer list using provider
     // for displaying it to the history.dart page
     context.read<HistoryProvider>().questionAnswer.insert(
           context.read<HistoryProvider>().questionAnswerIndex,
-          userQuestion.toString() + '=' + userAnswer.toString(),
+          _userQuestion.toString() + '=' + _userAnswer.toString(),
         );
     context.read<HistoryProvider>().increment();
   }

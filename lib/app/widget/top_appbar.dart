@@ -5,18 +5,16 @@
 // license that can be found in the LICENSE file or at
 // https://choosealicense.com/licenses/mit/
 
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:day_night_switcher/day_night_switcher.dart';
 
-import 'dropdown_menu.dart';
-import '../provider/theme_provider.dart';
 import '../provider/sound_provider.dart';
+import '../provider/theme_provider.dart';
+import 'dropdown_menu.dart';
 
 class TopButtons extends StatelessWidget {
-  const TopButtons({
-    Key? key,
-  }) : super(key: key);
+  const TopButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,7 @@ class TopButtons extends StatelessWidget {
             );
           },
         ),
-        const Expanded(child: SizedBox()),
+        const Spacer(),
         CustomDropdownMenu(
           borderRadius: BorderRadius.circular(10),
           backgroundColor: Theme.of(context).hoverColor,

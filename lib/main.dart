@@ -15,7 +15,7 @@ import 'app/provider/sound_provider.dart';
 import 'app/provider/history_provider.dart';
 
 void main() {
-  // For disabling landscape view
+  // This will disable the landscape view
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
@@ -24,15 +24,9 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => ThemeProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SoundProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => HistoryProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => SoundProvider()),
+        ChangeNotifierProvider(create: (_) => HistoryProvider()),
       ],
       child: const MyApp(),
     ),
