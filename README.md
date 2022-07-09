@@ -14,20 +14,32 @@
 
 Note: It's an open-source project; hence anyone can use this code according to the [MIT License](https://choosealicense.com/licenses/mit/) rules & regulations.
 
-## Third-Party Packages:
+<p align="justify">
+  In addition, it is using some other third-party packages from the open-source community. Thanks to those open-source developers for their amazing packages. Those packages are: 
+</p>
 
-1. For state-management: [provider: ^6.0.2](https://pub.dev/packages/provider)
-2. For modern neumorphic containers: [clay_containers: ^0.3.2](https://pub.dev/packages/clay_containers)
-3. For animated switch to activate dark/light mode: [day_night_switcher: ^0.2.0+1](https://pub.dev/packages/day_night_switcher)
-4. For playing 'button click' sound: [audioplayers: ^0.20.1](https://pub.dev/packages/audioplayers)
-5. For executing mathematical operations: [math_expressions: ^2.3.0](https://pub.dev/packages/math_expressions)
-6. For number formatting: [intl: ^0.17.0](https://pub.dev/packages/intl)
+```
+  # For state-management
+    provider: ^6.0.2
+  # For modern neumorphic containers
+    clay_containers: ^0.3.2
+  # For animated switch to activate dark/light mode
+    day_night_switcher: ^0.2.0+1
+  # For playing 'button click' sound
+    audioplayers: ^0.20.1
+  # For executing mathematical operations
+    math_expressions: ^2.3.0
+  # For number formatting
+    intl: ^0.17.0
+```
 
-   \*\*Thanks to those developers for their awesome packages.\*\*
+## Download APK File
 
-<!-- ## APK File -->
+<p align="center">
+    <a href="https://drive.google.com/file/d/1e1K5Zqu7hBWx9LXkVsKK0O96icGHvsbY/view?usp=sharing" target="_blank"><img src="screenshots/download_apk/apk-download-badge.png" height="100" ></img></a>
+</p>
 
-## Screenshots
+## App Demo
 
 <table align="center" style="margin: 0px auto;">
   <tr>
@@ -49,6 +61,8 @@ lib/
 │   │   ├── history_provider.dart
 │   │   ├── sound_provider.dart
 │   │   └── theme_provider.dart
+│   ├── static/
+│   │   └── button.dart
 │   ├── view/
 │   │   ├── calculator.dart
 │   │   └── history.dart
