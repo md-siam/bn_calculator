@@ -1,6 +1,7 @@
 <img src="screenshots/badges/built-with-love.svg" height="28px"/>&nbsp;&nbsp;
 <img src="screenshots/badges/flutter-dart.svg" height="28px" />&nbsp;&nbsp;
 <a href="https://choosealicense.com/licenses/mit/" target="_blank"><img src="screenshots/badges/license-MIT.svg" height="28px" /></a>&nbsp;&nbsp;
+<img src="screenshots/badges/Flutter-3.svg" height="28px" />&nbsp;&nbsp;
 <img src="screenshots/badges/dart-null_safety-blue.svg" height="28px"/>
 
 # Bengali Numeric (BN) Calculator
@@ -8,7 +9,7 @@
 <img align="right" src="assets/images/playstore.png" height="190"></img>
 
 <p align="justify" >
-    Bengali Numeric Calculator, in short, BN Calculator is designed with a custom <a href="lib/src/widget/button_widget.dart">neumorphic button</a> class, with a custom button press sound, that imitates the sound of a physical calculator. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar. I will be releasing this application on the Google Play store on 21st February to celebrate International Mother Language Day. If I get enough positive responses from the users, then I will release it on Apple AppStore.
+    Bengali Numeric Calculator, in short, BN Calculator is designed with a custom <a href="lib/src/widget/button_widget.dart">neumorphic button</a> class, with a custom button press sound, that imitates the sound of a physical calculator. In addition to that, it has a beautiful dark theme, and a user can turn On/Off the dark theme using a custom animated button on the AppBar.
 </p>
 
 Note: It's an open-source project; hence anyone can use this code according to the [MIT License](https://choosealicense.com/licenses/mit/) rules & regulations.
@@ -24,26 +25,7 @@ Note: It's an open-source project; hence anyone can use this code according to t
 
    \*\*Thanks to those developers for their awesome packages.\*\*
 
-## Directory
-
-```
-lib
-├── app
-│   ├── provider
-│   │   ├── history_provider.dart
-│   │   ├── sound_provider.dart
-│   │   └── theme_provider.dart
-│   ├── view
-│   │   ├── calculator.dart
-│   │   └── history.dart
-│   └── widget
-│       ├── util
-│       │   └── arrow_clipper.dart
-│       ├── button_widget.dart
-│       ├── dropdown_menu.dart
-│       └── top_appbar.dart
-└── main.dart
-```
+<!-- ## APK File -->
 
 ## Screenshots
 
@@ -58,12 +40,23 @@ lib
   </tr>
   </table>
 
-## Stores
+## File Pattern Inside The lib Folder
 
-<p align="justify" >
-    As I said before, initially, I will be releasing this application on the Google Play store on 21st February to celebrate International Mother Language Day. If I get enough positive responses from the users, then I will release it on Apple AppStore.
-</p>
-<p align="center">
-<a href="https://play.google.com/store/apps" target="_blank"><img src="screenshots/stores_logos/GooglePlay.png" height="50px" /></a>
-<a href="https://www.apple.com/app-store/" target="_blank"><img src="screenshots/stores_logos/AppStore.png" height="50px" /></a>
-</p>
+```
+lib/
+├── app/
+│   ├── provider/
+│   │   ├── history_provider.dart
+│   │   ├── sound_provider.dart
+│   │   └── theme_provider.dart
+│   ├── view/
+│   │   ├── calculator.dart
+│   │   └── history.dart
+│   └── widget/
+│       ├── util/
+│       │   └── arrow_clipper.dart
+│       ├── button_widget.dart
+│       ├── dropdown_menu.dart
+│       └── top_appbar.dart
+└── main.dart
+```
