@@ -18,7 +18,7 @@
   In addition, this calculator is using some other third-party packages from the open-source community. Thanks to those open-source developers for their amazing packages, and those packages are: 
 </p>
 
-```
+```yaml
   # For state-management
     provider: ^6.0.2
   # For modern neumorphic containers
